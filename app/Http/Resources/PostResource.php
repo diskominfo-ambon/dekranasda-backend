@@ -6,6 +6,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PostResource extends JsonResource
 {
+    public $with = ['error' => false];
+
     /**
      * Transform the resource into an array.
      *

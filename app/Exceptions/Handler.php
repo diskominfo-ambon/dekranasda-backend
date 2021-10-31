@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -37,5 +40,28 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e) {
+
+        if ($e instanceof ModelNotFoundException && $request->wantsJson()) {
+            return new JsonResponse(
+                [
+                    'error' => true,
+                    'data' => [
+                        'message' => 'Data tidak ditemukan',
+                        'exception' => $e->getMessage()
+                    ]
+                ],
+                $e->getCode() ?: 404,
+                [
+                    'accept' => 'application/json',
+                    'content-type' => 'application/json'
+                ],
+                JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
+            );
+        }
+
+        return parent::render($request, $e);
     }
 }

@@ -7,6 +7,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
 {
+    public $with = ['error' => false];
+
     /**
      * Transform the resource into an array.
      *

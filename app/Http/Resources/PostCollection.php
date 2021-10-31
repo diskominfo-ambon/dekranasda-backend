@@ -15,6 +15,7 @@ class PostCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
+            'error' => false,
             'data' => PostResource::collection($this->collection),
             'length' => $this->collection->count()
         ];

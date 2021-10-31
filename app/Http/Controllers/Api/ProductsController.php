@@ -10,6 +10,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductsController extends Controller
 {
