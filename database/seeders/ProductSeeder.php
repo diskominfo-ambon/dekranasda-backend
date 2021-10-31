@@ -24,6 +24,7 @@ class ProductSeeder extends Seeder
 
             Product::factory()
                 ->hasUser()
+                ->hasAttachments(3)
                 ->hasAttached($categories)
                 ->create();
 

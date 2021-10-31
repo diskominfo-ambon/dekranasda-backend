@@ -22,9 +22,11 @@ class ProductResource extends JsonResource
             'title' => $this->title,
             'content' => $this->content,
             'price' => $this->price,
+            'priceToRupiah' => rupiah($this->price),
             'categories' => CategoryResource::collection($this->categories),
             'published' => $this->published,
             'views' => views($this->resource)->count(),
+            'attachments' => AttachmentResource::collection($this->attachments),
             'created' => [
                 'calendar' => $this->created_at->isoFormat('LL'),
                 'full' => $this->created_at->isoFormat('LLLL'),
