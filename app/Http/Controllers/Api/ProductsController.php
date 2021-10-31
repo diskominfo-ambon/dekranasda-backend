@@ -10,40 +10,49 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductsController extends Controller
 {
+    /**
+     * Mengecek apahkan key tertentu tersedia pada filter.
+     *
+     * @param [array] $filter
+     * @param [string] $key
+     * @return boolean
+     */
+    private function isFilterKeyAvaiable($filter, $key)
+    {
+        return is_array($filter)
+            && Arr::exists($filter, $key)
+                && Str::of($filter[$key])->trim()->isNotEmpty();
+    }
+
+
+
     public function index(Request $request)
     {
-        $filter = $request->get('filter', []);
+        $filter = $request->filter;
 
-        $products = Product::where(function (Builder $builder) use ($filter) {
-
-            if (!is_array($filter)) return $builder;
-
-            Arr::exists($filter, 'keyword') && Str::of($filter['keyword'])->trim()->isNotEmpty()
-                && $builder->where('title', 'like', "%{$filter['keyword']}%");
-
-            Arr::exists($filter, 'categories') && Str::of($filter['categories'])->trim()->isNotEmpty()
-                && $categories = Str::of($filter['categories'])
+        $products = Product::when(
+                $this->isFilterKeyAvaiable($filter, 'keyword'),
+                fn (Builder $builder) => $builder->where('title', 'like', "%{$filter['keyword']}%")
+            )
+            ->when($this->isFilterKeyAvaiable($filter, 'categories'), function (Builder $builder) use ($filter) {
+                $categories = Str::of($filter['categories'])
                     ->lower()
-                    ->split('/\,/')
-                    ->all();
+                    ->split('/\,/');
 
-                    $builder->whereRelation(
-                        'categories',
-                        fn (Builder $innerBuilder) => $innerBuilder->whereIn('slug', $categories)
-                    );
-
-            return $builder;
-        })
-        ->get()
-        ->all();
+                return $builder->whereRelation(
+                    'categories',
+                    fn (Builder $innerBuilder) => $innerBuilder->whereIn('slug', $categories)
+                );
+            })
+            ->get();
 
         return new ProductCollection($products);
     }
+
+
 
     public function show(int $id)
     {
