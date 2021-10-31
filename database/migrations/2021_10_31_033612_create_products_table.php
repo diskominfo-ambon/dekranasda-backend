@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->longText('content');
             $table->unsignedBigInteger('price');
             $table->datetime('deleted_at')->nullable();
-            $table->datetime('published')->nullable();
+            $table->datetime('published')->default(false);
             $table->foreignId('user_id')->onDelete('cascade');
             $table->timestamps();
         });
