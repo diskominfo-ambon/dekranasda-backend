@@ -24,7 +24,8 @@ class ProductResource extends JsonResource
             'published' => $this->published,
             'views' => views($this->resource)->count(),
             'created' => [
-                'calendar' => $this->created_at->format('LLL'),
+                'calendar' => $this->created_at->isoFormat('LL'),
+                'full' => $this->created_at->isoFormat('LLLL'),
                 'default' => $this->created_at
             ],
             'user' => new UserResource($this->user)

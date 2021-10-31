@@ -14,9 +14,23 @@ class PostResource extends JsonResource
      */
     public function toArray($request)
     {
-        return array_merge(
-            parent::toArray($request),
-            ['views' => views($this->resource)->count()]
-        );
+        return [
+                'id' => $this->id,
+                'title' => $this->title,
+                'slug' => $this->slug,
+                'published' => $this->published,
+                'content' => $this->content,
+                'views' => views($this->resource)->count(),
+                'created' => [
+                    'calendar' => $this->created_at->isoFormat('LL'),
+                    'full' => $this->created_at->isoFormat('LLLL'),
+                    'default' => $this->created_at
+                ],
+                'updated' => [
+                    'calendar' => $this->updated_at->isoFormat('LL'),
+                    'full' => $this->updated_at->isoFormat('LLLL'),
+                    'default' => $this->updated_at
+                ]
+            ];
     }
 }
