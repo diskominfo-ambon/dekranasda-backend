@@ -16,7 +16,7 @@ class ProductCollection extends ResourceCollection
     {
         return [
             'data' => ProductResource::collection($this->collection),
-            'length' => $this->collection->count()
+            'length' => $this->collection->count(),
         ];
     }
 }
