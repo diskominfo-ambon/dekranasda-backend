@@ -13,4 +13,6 @@ class Post extends Model implements Viewable
 
     protected $removeViewsOnDelete = true;
 
+    protected $guarded = ['id'];
+
 }
