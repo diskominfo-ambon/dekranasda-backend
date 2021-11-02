@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('content');
-            $table->datetime('published')->default(false);
+            $table->datetime('published')->nullable();
             $table->datetime('deleted_at')->nullable();
             /** Optional */
             /** $table->foreignId('user_id')->onDelete('cascade'); */
