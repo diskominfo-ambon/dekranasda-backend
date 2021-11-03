@@ -10,9 +10,10 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png">
     <!-- Page Title  -->
-    <title>Crypto Dashboard | DashLite Admin Template</title>
+    <title>Home</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('css/dashlite/dashlite.min.css?ver=2.2.0') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashlite/theme.css?ver=2.2.0') }}">
 </head>
 
 <body class="nk-body bg-white has-sidebar">
@@ -23,7 +24,7 @@
             <x-dashlite.sidebar/>
             <!-- sidebar @e -->
             <!-- wrap @s -->
-            <div class="nk-wrap ">
+            <div class="nk-wrap">
 
                 <x-dashlite.header/>
 
