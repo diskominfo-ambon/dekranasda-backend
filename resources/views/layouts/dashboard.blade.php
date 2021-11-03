@@ -37,8 +37,6 @@
                     </div>
                 </div>
                 <!-- content @e -->
-
-                <x-dashlite.footer/>
             </div>
             <!-- wrap @e -->
         </div>

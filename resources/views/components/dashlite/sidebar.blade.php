@@ -89,72 +89,36 @@
                         </li>
                         <li class="nk-menu-item">
                             <a href="html/crypto/index.html" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-dashboard"></em></span>
-                                <span class="nk-menu-text">Dashboard</span>
+                                <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
+                                <span class="nk-menu-text">Beranda</span>
                             </a>
                         </li>
                         <li class="nk-menu-item">
                             <a href="html/crypto/accounts.html" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-user-c"></em></span>
-                                <span class="nk-menu-text">My Account</span>
+                                <span class="nk-menu-icon"><em class="icon ni ni-todo-fill"></em></span>
+                                <span class="nk-menu-text">Produk</span>
                             </a>
                         </li>
                         <li class="nk-menu-item">
                             <a href="html/crypto/wallets.html" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-wallet-alt"></em></span>
-                                <span class="nk-menu-text">Wallets</span>
+                                <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
+                                <span class="nk-menu-text">Kegiatan & Berita</span>
                             </a>
                         </li>
                         <li class="nk-menu-item">
                             <a href="html/crypto/buy-sell.html" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
-                                <span class="nk-menu-text">Buy / Sell</span>
+                                <span class="nk-menu-icon"><em class="icon ni ni-user-fill-c"></em></span>
+                                <span class="nk-menu-text">Pengguna</span>
                             </a>
                         </li>
-                        <li class="nk-menu-item">
-                            <a href="html/crypto/order-history.html" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-repeat"></em></span>
-                                <span class="nk-menu-text">Orders</span>
-                            </a>
-                        </li>
-                        <li class="nk-menu-item">
-                            <a href="html/crypto/chats.html" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-chat-circle"></em></span>
-                                <span class="nk-menu-text">Chats</span>
-                            </a>
-                        </li>
-                        <li class="nk-menu-item">
-                            <a href="html/crypto/profile.html" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-account-setting"></em></span>
-                                <span class="nk-menu-text">My Profile</span>
-                            </a>
-                        </li>
-                        <li class="nk-menu-item has-sub">
-                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                <span class="nk-menu-icon"><em class="icon ni ni-files"></em></span>
-                                <span class="nk-menu-text">Additional Pages</span>
-                            </a>
-                            <ul class="nk-menu-sub">
-                                <li class="nk-menu-item">
-                                    <a href="html/crypto/welcome.html" class="nk-menu-link"><span class="nk-menu-text">Welcome</span></a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/crypto/kyc-application.html" class="nk-menu-link"><span class="nk-menu-text">KYC - Get Started</span></a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/crypto/kyc-form.html" class="nk-menu-link"><span class="nk-menu-text">KYC - Application Form</span></a>
-                                </li>
-                            </ul><!-- .nk-menu-sub -->
-                        </li><!-- .nk-menu-item -->
-                   
                     </ul><!-- .nk-menu -->
                 </div><!-- .nk-sidebar-menu -->
                 <div class="nk-sidebar-footer">
                     <ul class="nk-menu nk-menu-footer">
                         <li class="nk-menu-item">
                             <a href="#" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-help-alt"></em></span>
-                                <span class="nk-menu-text">Support</span>
+                                <span class="nk-menu-icon text-primary"><em class="icon ni ni-help-alt"></em></span>
+                                <span class="nk-menu-text ml-1">Butuh bantuan? hubungi Tim Developer.</span>
                             </a>
                         </li>
                     </ul><!-- .nk-footer-menu -->
