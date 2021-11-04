@@ -9,6 +9,7 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use App\Models\Concerns\HasAttachment;
+use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model implements Viewable
 {
@@ -29,5 +30,16 @@ class Product extends Model implements Viewable
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopePublished(Builder $builder): Builder
+    {
+        return $this->whereNotNull('published');
+    }
+
+
+    public function scopeById(Builder $builder, $id): Builder
+    {
+        return $this->whereId($id);
     }
 }

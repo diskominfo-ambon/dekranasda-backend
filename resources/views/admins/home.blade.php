@@ -6,7 +6,7 @@
         <div class="nk-block-head-content">
             <h4 class="nk-block-title fw-bold">Beranda</h4>
             <div class="nk-block-des">
-                <p>Here is the list of your assets / wallets!</p>
+                <p>Hai Azman Abdullah, selamat datan kembali.</p>
             </div>
         </div>
     </div><!-- .nk-block-between -->
@@ -23,13 +23,10 @@
                 <div class="nk-wgw">
                     <div class="nk-wgw-inner">
                         <a class="nk-wgw-name" href="html/crypto/wallet-bitcoin.html">
-                            <div class="nk-wgw-icon is-default">
-                                <em class="icon ni ni-sign-usd"></em>
-                            </div>
                             <h5 class="nk-wgw-title title">USD Account</h5>
                         </a>
                         <div class="nk-wgw-balance">
-                            <div class="amount">12,495.90<span class="currency currency-usd">USD</span></div>
+                            <div class="amount">Baju batik indonesia</div>
                             <div class="amount-sm">12,495.90<span class="currency currency-usd">USD</span></div>
                         </div>
                     </div>
@@ -37,7 +34,6 @@
                         <ul>
                             <li><a href="#"><em class="icon ni ni-arrow-up-right"></em> <span>Send</span></a></li>
                             <li><a href="#"><em class="icon ni ni-arrow-down-left"></em><span>Receive</span></a></li>
-                            <li><a href="#"><em class="icon ni ni-arrow-to-right"></em><span>Withdraw</span></a></li>
                         </ul>
                     </div>
                     <div class="nk-wgw-more dropdown">

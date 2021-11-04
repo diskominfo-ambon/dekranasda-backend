@@ -8,20 +8,13 @@
         <div class="nk-sidebar-body" data-simplebar>
             <div class="nk-sidebar-content">
                 <div class="nk-sidebar-widget d-none d-xl-block">
-                    <div class="user-account-info between-center">
-                        <div class="user-account-main">
-                            <h6 class="overline-title-alt">Pengguna: ADMIN</h6>
-                            <h6 class="user-balance m-0">Azman Abdullah</h6>
-                        </div>
-                    </div>
                     <div class="user-account-actions">
                         <ul class="g-2 d-block">
                             <li class="w-100">
                                 <a href="#" class="btn btn-lg btn-primary">
-                                    <span><em class="icon ni ni-plus position-relative" style="top: 2px;"></em> Produk</span>
+                                    <span><em class="icon ni ni-wallet-saving position-relative" style="top: 2px;"></em> Produk</span>
                                 </a>
                             </li>
-                            <li class="w-100"><a href="#" class="btn btn-lg btn-secondary"><span><em class="icon ni ni-plus position-relative" style="top: 2px;"></em> Kegiatan & berita</span></a></li>
                         </ul>
                     </div>
                 </div><!-- .nk-sidebar-widget -->
@@ -30,14 +23,14 @@
                         <div class="user-card-wrap">
                             <div class="user-card">
                                 <div class="user-avatar">
-                                    <span>AB</span>
+                                    <em class="icon ni ni-user-fill"></em>
                                 </div>
                                 <div class="user-info">
                                     <span class="lead-text">Abu Bin Ishtiyak</span>
                                     <span class="sub-text">info@softnio.com</span>
                                 </div>
                                 <div class="user-action">
-                                    <em class="icon ni ni-chevron-down"></em>
+                                    <em class="icon ni ni-caret-down-fill"></em>
                                 </div>
                             </div>
                         </div>
@@ -84,14 +77,14 @@
                         </ul>
                     </div>
                 </div><!-- .nk-sidebar-widget -->
-                <div class="nk-sidebar-menu">
+                <div class="nk-sidebar-menu pt-0 mt-4">
                     <!-- Menu -->
                     <ul class="nk-menu">
                         <li class="nk-menu-heading">
                             <h6 class="overline-title">Menu</h6>
                         </li>
                         <li class="nk-menu-item">
-                            <a href="html/crypto/index.html" class="nk-menu-link">
+                            <a href="" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                                 <span class="nk-menu-text">Beranda</span>
                             </a>

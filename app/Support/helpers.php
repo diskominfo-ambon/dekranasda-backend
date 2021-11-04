@@ -16,3 +16,18 @@ if (!function_exists('str')) {
         return Str::of($string);
     }
 }
+
+
+if (!function_exists('humanize_sum')) {
+    function humanize_sum(int $total) {
+        if ($total >= 1000) {
+            return $total / 1000 . "rb";
+        }
+
+        if ($total >= 1000000) {
+            return $total / 1000000 . "jt";
+        }
+
+        return $total;
+    }
+}

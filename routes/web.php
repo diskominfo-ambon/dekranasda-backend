@@ -17,10 +17,3 @@ use App\Http\Controllers\ProductsController;
 */
 
 Auth::routes();
-
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => ['auth']], function () {
-    Route::resource('postingan', PostsController::class);
-    Route::resource('produk', ProductsController::class);
-});
-
