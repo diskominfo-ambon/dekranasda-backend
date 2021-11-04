@@ -10,15 +10,18 @@
                 <div class="nk-sidebar-widget d-none d-xl-block">
                     <div class="user-account-info between-center">
                         <div class="user-account-main">
-                            <h6 class="overline-title-alt">Available Balance</h6>
-                            <div class="user-balance">2.014095 <small class="currency currency-btc">BTC</small></div>
-                            <div class="user-balance-alt">18,934.84 <span class="currency currency-btc">BTC</span></div>
+                            <h6 class="overline-title-alt">Pengguna: ADMIN</h6>
+                            <h6 class="user-balance m-0">Azman Abdullah</h6>
                         </div>
                     </div>
                     <div class="user-account-actions">
-                        <ul class="g-3">
-                            <li><a href="#" class="btn btn-lg btn-primary"><span>Deposit</span></a></li>
-                            <li><a href="#" class="btn btn-lg btn-secondary"><span>Withdraw</span></a></li>
+                        <ul class="g-2 d-block">
+                            <li class="w-100">
+                                <a href="#" class="btn btn-lg btn-primary">
+                                    <span><em class="icon ni ni-plus position-relative" style="top: 2px;"></em> Produk</span>
+                                </a>
+                            </li>
+                            <li class="w-100"><a href="#" class="btn btn-lg btn-secondary"><span><em class="icon ni ni-plus position-relative" style="top: 2px;"></em> Kegiatan & berita</span></a></li>
                         </ul>
                     </div>
                 </div><!-- .nk-sidebar-widget -->
@@ -99,6 +102,13 @@
                                 <span class="nk-menu-text">Produk</span>
                             </a>
                         </li>
+                        <li class="nk-menu-item">
+                            <a href="html/crypto/accounts.html" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-check-fill-c"></em></span>
+                                <span class="nk-menu-text">Konfirmasi Produk</span>
+                            </a>
+                        </li>
+
                         <li class="nk-menu-item">
                             <a href="html/crypto/wallets.html" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
