@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -12,9 +14,18 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admins.users.index');
+        $keyword = $request->get('keyword', '');
+        $users = User::latest()
+            ->when(
+                Str::of($keyword)->trim()->isNotEmpty(),
+                fn ($builder) => $builder->where('name', 'like', "%{$keyword}%")
+            )
+            ->paginate();
+        $users->append('keyword');
+
+        return view('admins.users.index', compact('users', 'keyword'));
     }
 
     /**
@@ -24,7 +35,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admins.users.create');
     }
 
     /**
@@ -35,19 +46,13 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create($request->all());
+
+        return redirect()
+            ->route('admins.pengguna.index')
+            ->with('message', 'Berhasil menambahkan pengguna '. $user->name);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,7 +62,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admins.products.edit', compact('user'));
     }
 
     /**
@@ -69,7 +76,12 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        return redirect()
+            ->route('admins.pengguna.index')
+            ->with('message', 'Berhasil menyimpan perubahan pengguna');
     }
 
     /**
@@ -80,6 +92,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()
+            ->back()
+            ->with('message', 'Berhasil menghapus pengguna '. $user->name);
+
     }
 }

@@ -7,19 +7,19 @@
             <div class="buysell wide-xs m-auto">
                 <div class="buysell-title text-center">
                     <h4 class="title">
-                        Ubah postingan
+                        Tambahkan postingan baru
                     </h4>
                 </div><!-- .buysell-title -->
                 <div class="buysell-block">
-                    <form action="{{ route('admins.post.update', $post->id) }}" class="buysell-form" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admins.post.store') }}" class="buysell-form" enctype="multipart/form-data" method="post">
                         @csrf
-                        @method('put')
+                        @method('post')
                         <div class="buysell-field form-group">
                             <div class="form-label-group">
                                 <label class="form-label" for="title">Judul</label>
                             </div>
                             <div class="form-control-group">
-                                <input value="{{ $post->title }}" type="text" class="form-control form-control-lg form-control-number" id="title" name="title" placeholder="Judul postingan">
+                                <input value="{{ old('title') }}" type="text" class="form-control form-control-lg form-control-number" id="title" name="title" placeholder="Judul postingan">
                             </div>
                             <div class="form-note-group">
                                 <span class="buysell-min form-note-alt">
@@ -41,7 +41,7 @@
                                 <label class="form-label">Deskripsi</label>
                             </div>
                             <div class="form-pm-group">
-                                <textarea name="content" class="tinymce-toolbar form-control">{{ $post->content }}</textarea>
+                                <textarea name="content" class="tinymce-toolbar form-control">{{ old('content', 'Postingan saya') }}</textarea>
                             </div>
                             @error('content')
                             <div class="form-note-group">
@@ -61,7 +61,7 @@
                             </div>
                             <div class="form-control-group">
                                 <div class="custom-file">
-                                    <input type="file" name="file" class="custom-file-input" id="attachment-input">
+                                    <input type="file" class="custom-file-input" name="file" id="attachment-input">
                                     <label class="custom-file-label" for="attachment-input">Unggah gambar</label>
                                 </div>
                             </div>
@@ -75,9 +75,9 @@
                         </div>
                         {{-- end --}}
 
-                        <div class="buysell-field form-action">
+                        <div class="buysell-field form-action mt-5">
                             <button class="btn btn-lg btn-primary" data-toggle="modal">
-                                Simpan postingan
+                                Tambahkan postingan
                             </button>
                         </div><!-- .buysell-field -->
                     </form><!-- .buysell-form -->

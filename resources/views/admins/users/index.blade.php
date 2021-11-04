@@ -5,9 +5,9 @@
 <div class="nk-block-head nk-block-head-sm">
     <div class="nk-block-between g-3">
         <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title">Pengguna</h3>
+            <h3 class="nk-block-title page-title">Semua pengguna</h3>
             <div class="nk-block-des text-soft">
-                <p>Kamu memiliki 203k jumlah pengguna yang terdaftar.</p>
+                <p>Kamu memiliki {{ $users->count() }} jumlah pengguna yang terdaftar.</p>
             </div>
         </div><!-- .nk-block-head-content -->
         <div class="nk-block-head-content">
@@ -17,7 +17,7 @@
                     <ul class="nk-block-tools g-3">
                         <li><a href="#" class="btn btn-white btn-dim btn-outline-light"><em class="icon ni ni-download"></em><span>Download</span></a></li>
                         <li class="nk-block-tools-opt">
-                            <a href="#" class="btn btn-icon btn-primary" data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
+                            <a href="{{ route('admins.pengguna.create') }}" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
                         </li>
                     </ul>
                 </div>
@@ -31,163 +31,76 @@
             <div class="card-inner">
                 <div class="card-title-group">
                     <div class="card-title">
-                        <h5 class="title">All Orders</h5>
+                        <h5 class="title">Semua pengguna</h5>
                     </div>
                     <div class="card-tools mr-n1">
                         <ul class="btn-toolbar gx-1">
                             <li>
                                 <a href="#" class="search-toggle border toggle-search btn btn-icon" data-target="search"><em class="icon ni ni-search"></em></a>
                             </li><!-- li -->
-                            <li class="btn-toolbar-sep"></li><!-- li -->
-                            <li>
-                                <div class="dropdown">
-                                    <a href="#" class="btn border btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                        <em class="icon ni ni-filter-alt"></em>
-                                    </a>
-                                    <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
-                                        <div class="dropdown-head">
-                                            <span class="sub-title dropdown-title">Advance Filter</span>
-                                            <div class="dropdown">
-                                                <a href="#" class="link link-light">
-                                                    <em class="icon ni ni-more-h"></em>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-body dropdown-body-rg">
-                                            <div class="row gx-6 gy-4">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="overline-title overline-title-alt">Type</label>
-                                                        <select class="form-select form-select-sm">
-                                                            <option value="any">Any Type</option>
-                                                            <option value="deposit">Deposit</option>
-                                                            <option value="buy">Buy Coin</option>
-                                                            <option value="sell">Sell Coin</option>
-                                                            <option value="transfer">Transfer</option>
-                                                            <option value="withdraw">Withdraw</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="overline-title overline-title-alt">Status</label>
-                                                        <select class="form-select form-select-sm">
-                                                            <option value="any">Any Status</option>
-                                                            <option value="pending">Pending</option>
-                                                            <option value="cancel">Cancel</option>
-                                                            <option value="process">Process</option>
-                                                            <option value="completed">Completed</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="overline-title overline-title-alt">Pay Currency</label>
-                                                        <select class="form-select form-select-sm">
-                                                            <option value="any">Any Coin</option>
-                                                            <option value="bitcoin">Bitcoin</option>
-                                                            <option value="ethereum">Ethereum</option>
-                                                            <option value="litecoin">Litecoin</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="overline-title overline-title-alt">Method</label>
-                                                        <select class="form-select form-select-sm">
-                                                            <option value="any">Any Method</option>
-                                                            <option value="paypal">PayPal</option>
-                                                            <option value="bank">Bank</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <div class="custom-control custom-control-sm custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="includeDel">
-                                                            <label class="custom-control-label" for="includeDel"> Including Deleted</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <button type="button" class="btn btn-secondary">Filter</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-foot between">
-                                            <a class="clickable" href="#">Reset Filter</a>
-                                            <a href="#savedFilter" data-toggle="modal">Save Filter</a>
-                                        </div>
-                                    </div><!-- .filter-wg -->
-                                </div><!-- .dropdown -->
-                            </li><!-- li -->
                         </ul><!-- .btn-toolbar -->
                     </div><!-- .card-tools -->
-                    <div class="card-search search-wrap" data-search="search">
+                    <form class="card-search search-wrap" data-search="search">
                         <div class="search-content">
                             <a href="#" class="search-back border btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                            <input type="text" class="form-control border-transparent form-focus-none" placeholder="Quick search by transaction">
+                            <input autocomplete="off" value="{{ $keyword }}" type="text" class="form-control border-transparent form-focus-none" placeholder="Telusuri nama pengguna yang ingin kamu cari">
                             <button class="search-submit border btn-white btn"><em class="icon ni ni-search mr-1"></em> Telusuri</button>
                         </div>
-                    </div><!-- .card-search -->
+                    </form><!-- .card-search -->
                 </div><!-- .card-title-group -->
             </div><!-- .card-inner -->
             <div class="card-inner p-0">
                 <div class="nk-tb-list nk-tb-tnx">
                     <div class="nk-tb-item nk-tb-head">
-                        <div class="nk-tb-col"><span>Nama produk</span></div>
-                        <div class="nk-tb-col tb-col-lg"><span>Pengguna</span></div>
-                        <div class="nk-tb-col text-right"><span>Harga</span></div>
-                        <div class="nk-tb-col nk-tb-col-status"><span class="sub-text d-none d-md-block">Status</span></div>
+                        <div class="nk-tb-col"><span>Nama</span></div>
+                        <div class="nk-tb-col tb-col-lg"><span>Terdaftar pada</span></div>
+                        <div class="nk-tb-col text-right"><span>Nomor telepon</span></div>
+                        <div class="nk-tb-col nk-tb-col-status"><span class="sub-text d-none d-md-block">Status pengguna</span></div>
                         <div class="nk-tb-col nk-tb-col-tools"></div>
                     </div><!-- .nk-tb-item -->
+                    @foreach($users as $user)
                     <div class="nk-tb-item">
                         <div class="nk-tb-col">
                             <div class="nk-tnx-type">
-                                <div class="nk-tnx-type-icon bg-success-dim text-success">
-                                    <em class="icon ni ni-arrow-up-right"></em>
+                                <div class="nk-tnx-type-icon bg-secondary-dim">
+                                    <em class="icon ni ni-user-fill"></em>
                                 </div>
                                 <div class="nk-tnx-type-text">
-                                    <span class="tb-lead">Deposited Funds</span>
-                                    <span class="tb-date">18/10/2019 12:04 PM</span>
+                                    <span class="tb-lead">{{ $user->name }}</span>
+                                    <span class="tb-date">
+                                        {{ $user->email }}
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="nk-tb-col tb-col-xxl">
-                            <span class="tb-lead-sub">Using PayPal Account</span>
-                            <span class="tb-sub">mypay*****com</span>
-                        </div>
-                        <div class="nk-tb-col text-right">
-                            <span class="tb-amount">+ 0.010201 <span>BTC</span></span>
-                            <span class="tb-amount-sm">1290.49 USD</span>
+                        <div class="nk-tb-col">
+                            <span class="tb-amount">{{ $user->created_at->isoFormat('LL') }}</span>
                         </div>
                         <div class="nk-tb-col text-right tb-col-sm">
-                            <span class="tb-amount">1.30910201 <span>BTC</span></span>
-                            <span class="tb-amount-sm">101290.49 USD</span>
+                            <span class="tb-amount">{{ $user->phone_number ?? 'Tidak tersedia' }}</span>
                         </div>
                         <div class="nk-tb-col nk-tb-col-status">
-                            <div class="dot dot-success d-md-none"></div>
-                            <span class="badge badge-sm badge-dim badge-outline-success d-none d-md-inline-flex">Completed</span>
+                            <span class="badge badge-sm badge-dim badge-success d-none d-md-inline-flex">ADMIN</span>
                         </div>
                         <div class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-2">
                                 <li class="nk-tb-action-hidden">
-                                    <a href="#" class="bg-white btn btn-sm btn-outline-light btn-icon" data-toggle="tooltip" data-placement="top" title="Approve"><em class="icon ni ni-done"></em></a>
-                                </li>
-                                <li class="nk-tb-action-hidden">
-                                    <a href="#tranxDetails" data-toggle="modal" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Details"><em class="icon ni ni-eye"></em></a>
+                                    <a href="{{ route('admins.pengguna.edit', $user->id) }}" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Ubah pengguna"><em class="icon ni ni-edit"></em></a>
                                 </li>
                                 <li>
                                     <div class="dropdown">
                                         <a href="#" class="dropdown-toggle bg-white btn btn-sm btn-outline-light btn-icon" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt">
-                                                <li><a href="#"><em class="icon ni ni-done"></em><span>Approve</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-cross-round"></em><span>Reject</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-repeat"></em><span>Check</span></a></li>
-                                                <li><a href="#tranxDetails" data-toggle="modal"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                <li><a href="{{ route('admins.pengguna.edit', $user->id) }}"><em class="icon ni ni-edit"></em><span>Ubah pengguna</span></a></li>
+                                                <li><a href="#"><em class="icon ni ni-cross-round"></em><span>Nonaktifkan pengguna</span></a></li>
+                                                <li>
+                                                    <form method="post" action="{{ route('admins.pengguna.destroy', $user->id) }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-white btn-block font-weight-normal text-danger" onclick="return confirm('Yakin ingin menghapus?')"><em class="icon ni ni-trash"></em><span>Hapus pengguna</span></button>
+                                                    </form>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -195,18 +108,11 @@
                             </ul>
                         </div>
                     </div><!-- .nk-tb-item -->
+                    @endforeach
                 </div><!-- .nk-tb-list -->
             </div><!-- .card-inner -->
             <div class="card-inner">
-                <ul class="pagination justify-content-center justify-content-md-start">
-                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><span class="page-link"><em class="icon ni ni-more-h"></em></span></li>
-                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
+                {{ $users->links('pagination::bootstrap-4') }}
             </div><!-- .card-inner -->
         </div><!-- .card-inner-group -->
     </div><!-- .card -->
