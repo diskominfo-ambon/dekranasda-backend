@@ -8,7 +8,9 @@
         <h4 class="title">Buat produk kamu menarik!<span class="text-primary d-block mt-1">#perajinindonesia.</span></h4>
     </div><!-- .buysell-title -->
     <div class="buysell-block">
-        <form action="#" class="buysell-form">
+        <form action="{{ route('admins.produk.store') }}" class="buysell-form" method="POST">
+            @csrf
+            @method('POST')
             {{-- nama produk --}}
             <div class="buysell-field form-group">
                 <div class="form-label-group">
@@ -72,7 +74,7 @@
                         Masukan nominal tanpa menggunakan tanda (,) sesuai dengan contoh.
                     </span>
                 </div>
-                @error('title')
+                @error('price')
                 <div class="form-note-group">
                     <span class="buysell-min form-note-alt text-danger fs-15px">
                         {{ $message }}
@@ -96,6 +98,14 @@
                         @endforeach
                     </select>
                 </div>
+
+                @error('categories')
+                <div class="form-note-group">
+                    <span class="buysell-min form-note-alt text-danger fs-15px">
+                        {{ $message }}
+                    </span>
+                </div>
+                @enderror
             </div>
             {{-- end --}}
 
@@ -107,6 +117,13 @@
                 <div class="form-pm-group">
                     <textarea name="content" class="tinymce-toolbar form-control">Produk terbaik saya!</textarea>
                 </div>
+                @error('content')
+                <div class="form-note-group">
+                    <span class="buysell-min form-note-alt text-danger fs-15px">
+                        {{ $message }}
+                    </span>
+                </div>
+                @enderror
             </div>
             {{-- end --}}
 
@@ -117,8 +134,8 @@
                 </div>
                 <div class="form-control-group">
                     <div class="custom-file">
-                        <input type="file" class="form-control form-control-lg form-control-number" id="buysell-amount" name="bs-amount" placeholder="Contoh: Kain batik tual">
-                        <label class="custom-file-label">Jumlah unggahan 0</label>
+                        <input type="file" multiple id="attachment-input" placeholder="Contoh: Kain batik tual">
+                        <label class="custom-file-label" for="attachment-input">Jumlah unggahan 0</label>
                     </div>
                 </div>
                 <div class="form-note-group">
@@ -126,13 +143,47 @@
                         Kamu dapat menggungah max 3 gambar untuk setiap produk.
                     </span>
                 </div>
+
+                @error('attachments')
+                <div class="form-note-group">
+                    <span class="buysell-min form-note-alt text-danger fs-15px">
+                        {{ $message }}
+                    </span>
+                </div>
+                @enderror
+            </div>
+            {{-- end --}}
+
+            {{-- attachments --}}
+            <span class="mb-1 font-weight-bold d-block">Unggahan produk</span>
+            <div class="nk-file-item nk-file">
+                <div class="nk-file-item nk-file border px-2 py-2 rounded">
+                    <div class="nk-file-info">
+                        <div class="nk-file-title">
+                            <div class="nk-file-name">
+                                <div class="nk-file-name-text d-flex">
+                                    <a href="#" class="title">Proposal</a>
+                                    <div class="ml-2">
+                                        <a href="#" class="">Lihat</a>
+                                        <span class="d-inline-block text-gray fs-10px">•</span>
+                                        <a href="#" class="text-danger">Hapus</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <ul class="nk-file-desc">
+                            <li class="date">Ukuran</li>
+                            <li class="size">4.5 MB</li>
+                        </ul>
+                    </div>
             </div>
             {{-- end --}}
 
             {{-- submit --}}
             <div class="buysell-field form-action mt-5 d-lg-flex align-items-center justify-content-between d-sm-block">
                 <small class="text-base d-block mb-sm-2 mt-md-0">Catatan: Semua informasi mengenai pembelian akan diinfokan ke nomor telepon / WA pengguna.</small>
-                <a href="#" style="flex-basis: 40%;" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#buy-coin">Tambahkan produk</a>
+                <button style="flex-basis: 40%;" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#buy-coin">Tambahkan produk</button>
             </div>
             {{-- end --}}
         </form><!-- .buysell-form -->

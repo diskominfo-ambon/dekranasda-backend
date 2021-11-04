@@ -13,7 +13,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,39 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required',
+            'content' => 'required',
+            'categories' => 'required',
+            'attachments' => 'required',
+            'price' => 'required'
         ];
     }
+
+
+    public function attributes()
+    {
+        return [
+            'title' => 'Nama produk',
+            'content' => 'Deskripsi produk',
+            'price' => 'Harga',
+            'categories' => 'Kategori',
+            'attachments' => 'Unggahan produk'
+        ];
+    }
+
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute wajib untuk dimasukan'
+        ];
+    }
+
+
+    public function validationData()
+    {
+        return $this->except(['attachments', 'categories']);
+    }
 }
+
+

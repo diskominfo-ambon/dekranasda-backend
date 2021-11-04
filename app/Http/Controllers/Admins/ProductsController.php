@@ -52,11 +52,13 @@ class ProductsController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        dump($request->validationData());
         dd($request->all());
 
-        $product = Product::create($request->getData());
+        $product = Product::create($request->validationData());
 
-        $product->attachments()->attach($request->only('attachments'));
+        $product->categories()->attach($request->categories);
+        $product->attachments()->attach($request->attachments);
 
         return redirect()
             ->route('admins.produk')
