@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Str;
 
 class UsersController extends Controller
@@ -18,10 +19,7 @@ class UsersController extends Controller
     {
         $keyword = $request->get('keyword', '');
         $users = User::latest()
-            ->when(
-                Str::of($keyword)->trim()->isNotEmpty(),
-                fn ($builder) => $builder->where('name', 'like', "%{$keyword}%")
-            )
+            ->byKeyword('name', $keyword)
             ->paginate();
         $users->append('keyword');
 
@@ -41,10 +39,10 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = User::create($request->all());
 
@@ -64,17 +62,17 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('admins.products.edit', compact('user'));
+        return view('admins.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UserRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->update($request->all());

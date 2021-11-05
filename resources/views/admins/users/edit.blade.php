@@ -7,7 +7,7 @@
             <div class="buysell wide-xs m-auto">
                 <div class="buysell-title text-center">
                     <h4 class="title">
-                        Ubah data pengguna {{ $user->name }}
+                        Ubah data pengguna <b>{{ $user->name }}</b>
                     </h4>
                 </div><!-- .buysell-title -->
                 <div class="buysell-block">
@@ -82,7 +82,7 @@
                                 <label class="form-label" for="password">Kata sandi baru</label>
                             </div>
                             <div class="form-control-group">
-                                <input type="password" class="form-control form-control-lg form-control-number" id="password" name="password" placeholder="Kata sandi baru Anda">
+                                <input type="password" class="form-control form-control-lg form-control-number" id="password" name="new_password" placeholder="Kata sandi baru Anda">
                             </div>
                             <div class="form-note-group">
                                 <span class="buysell-min form-note-alt">
@@ -146,7 +146,7 @@
                             <em class="icon ni ni-chevron-left mr-1"></em> Kembali
                             </a>
                             <button class="btn btn-primary ml-1 d-inline-flex align-items-center">
-                                Simpan <span class="fs-12px"><em class="icon ni ni-user-add-fill ml-1"></em></span>
+                                Simpan <span class="fs-12px"><em class="icon ni ni-user-check-fill ml-1"></em></span>
                             </button>
                         </div><!-- .buysell-field -->
                     </form><!-- .buysell-form -->
