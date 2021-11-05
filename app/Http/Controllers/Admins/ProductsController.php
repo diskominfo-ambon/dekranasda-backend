@@ -22,11 +22,7 @@ class ProductsController extends Controller
 
         $products = Product::published()
             ->with('user')
-            ->when(
-                // Search product when 'keyword' is not empty.
-                Str::of($keyword)->trim()->isNotEmpty(),
-                fn ($builder) => $builder->where('title', 'like', "%{$keyword}%")
-            )
+            ->byKeyword('title', $keyword)
             ->paginate();
 
         return view('admins.products.index', compact('products', 'keyword'));

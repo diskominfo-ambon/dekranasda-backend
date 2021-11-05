@@ -10,10 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use App\Models\Concerns\HasAttachment;
 use Illuminate\Database\Eloquent\Builder;
+use App\Models\Concerns\InteractsWithKeyword;
 
 class Product extends Model implements Viewable
 {
-    use HasFactory, InteractsWithViews, HasAttachment;
+    use HasFactory, InteractsWithViews, HasAttachment, InteractsWithKeyword;
 
     protected $removeViewsOnDelete = true;
 
