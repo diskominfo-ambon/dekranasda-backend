@@ -31,7 +31,7 @@
 .buysell-pm-label::after {
   background-color: #DA251A !important;
 }
-.btn-primary {
+.btn-primary, .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #DA251A !important;
   border-color: #DA251A !important;
 }

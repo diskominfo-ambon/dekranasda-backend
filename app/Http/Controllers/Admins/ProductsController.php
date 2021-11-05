@@ -18,7 +18,7 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword =$request->get('keyword', '');
+        $keyword = $request->get('keyword', '');
 
         $products = Product::published()
             ->with('user')
@@ -70,7 +70,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::published()->byId($id)->first();
+        $product = Product::findOrFail($id)->first();
 
         return view('admins.products.show', compact('product'));
     }
@@ -83,7 +83,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::published()->byId($id)->first();
+        $product = Product::findOrFail($id)->first();
 
         return view('admins.products.edit', compact('product'));
     }

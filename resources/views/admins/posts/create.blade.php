@@ -65,20 +65,31 @@
                                     <label class="custom-file-label" for="attachment-input">Unggah gambar</label>
                                 </div>
                             </div>
-                            @error('file')
-                            <div class="form-note-group">
-                                <span class="buysell-min form-note-alt text-danger fs-15px">
-                                    {{ $message }}
-                                </span>
-                            </div>
-                            @enderror
                         </div>
+                        @error('file')
+                        <div class="form-note-group">
+                            <span class="buysell-min form-note-alt text-danger fs-15px">
+                                {{ $message }}
+                            </span>
+                        </div>
+                        @enderror
                         {{-- end --}}
 
-                        <div class="buysell-field form-action mt-5">
-                            <button class="btn btn-lg btn-primary" data-toggle="modal">
-                                Tambahkan postingan
-                            </button>
+                        <div class="buysell-field form-action mt-5 d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="published" id="customSwitch1">
+                                    <label class="custom-control-label" for="customSwitch1">Terbitkan</label>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="{{ route('admins.post.index') }}" class="btn btn-white d-inline-flex align-items-center">
+                                    <em class="icon ni ni-chevron-left mr-1"></em> Kembali
+                                </a>
+                                <button class="btn btn-primary ml-1 d-inline-flex align-items-center">
+                                    Tambahkan
+                                </button>
+                            </div>
                         </div><!-- .buysell-field -->
                     </form><!-- .buysell-form -->
                 </div><!-- .buysell-block -->
