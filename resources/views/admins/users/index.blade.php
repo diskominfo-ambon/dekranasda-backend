@@ -5,7 +5,7 @@
 <div class="nk-block-head nk-block-head-sm">
     <div class="nk-block-between g-3">
         <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title">Semua pengguna</h3>
+            <h3 class="nk-block-title page-title">Pengguna</h3>
             <div class="nk-block-des text-soft">
                 <p>Kamu memiliki {{ $users->count() }} jumlah pengguna yang terdaftar.</p>
             </div>
