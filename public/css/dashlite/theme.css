@@ -50,7 +50,8 @@
   font-family: Nunito,sans-serif !important;
 }
 
-.nk-menu-item.active .nk-menu-link, .nk-menu-item.active .nk-menu-icon, .nk-menu-item .nk-menu-link:hover {
+
+.nk-menu-item.active .nk-menu-link, .nk-menu-item.active .nk-menu-icon,  .nk-menu-item .nk-menu-link:hover, .nk-menu-item .nk-menu-link:hover .nk-menu-icon {
   color: #DA251A !important;
 }
 

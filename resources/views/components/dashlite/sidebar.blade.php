@@ -42,7 +42,7 @@
                                 <div class="user-balance">2.014095 <small class="currency currency-btc">BTC</small></div>
                                 <div class="user-balance-alt">18,934.84 <span class="currency currency-btc">BTC</span></div>
                             </div>
-                            <a href="#" class="btn btn-icon btn-light"><em class="icon ni ni-line-chart"></em></a>
+
                         </div>
                         <ul class="user-account-data">
                             <li>
@@ -63,17 +63,11 @@
                                 </div>
                             </li>
                         </ul>
-                        <ul class="user-account-links">
-                            <li><a href="#" class="link"><span>Withdraw Funds</span> <em class="icon ni ni-wallet-out"></em></a></li>
-                            <li><a href="#" class="link"><span>Deposit Funds</span> <em class="icon ni ni-wallet-in"></em></a></li>
+                        <ul class="link-list">
+                            <li><a href="html/crypto/profile-security.html"><em class="icon ni ni-setting-alt"></em><span>Pengaturan akun</span></a></li>
                         </ul>
                         <ul class="link-list">
-                            <li><a href="html/crypto/profile.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                            <li><a href="html/crypto/profile-security.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
-                            <li><a href="html/crypto/profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
-                        </ul>
-                        <ul class="link-list">
-                            <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                            <li><a href="#"><em class="icon ni ni-signout"></em><span>Keluar</span></a></li>
                         </ul>
                     </div>
                 </div><!-- .nk-sidebar-widget -->
@@ -84,13 +78,13 @@
                             <h6 class="overline-title">Menu</h6>
                         </li>
                         <li class="nk-menu-item">
-                            <a href="" class="nk-menu-link">
+                            <a href="{{ route('admins.home') }}" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                                 <span class="nk-menu-text">Beranda</span>
                             </a>
                         </li>
                         <li class="nk-menu-item">
-                            <a href="html/crypto/accounts.html" class="nk-menu-link">
+                            <a href="{{ route('admins.produk.index') }}" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-todo-fill"></em></span>
                                 <span class="nk-menu-text">Produk</span>
                             </a>
@@ -103,13 +97,13 @@
                         </li>
 
                         <li class="nk-menu-item">
-                            <a href="html/crypto/wallets.html" class="nk-menu-link">
+                            <a href="{{ route('admins.post.index') }}" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-wallet-fill"></em></span>
                                 <span class="nk-menu-text">Kegiatan & Berita</span>
                             </a>
                         </li>
                         <li class="nk-menu-item">
-                            <a href="html/crypto/buy-sell.html" class="nk-menu-link">
+                            <a href="{{ route('admins.pengguna.index') }}" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-user-fill-c"></em></span>
                                 <span class="nk-menu-text">Pengguna</span>
                             </a>

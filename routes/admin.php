@@ -9,7 +9,7 @@ use App\Http\Controllers\Admins\HomeController;
 
 
 Route::get('/', [HomeController::class, 'index'])
-    ->name('admins');
+    ->name('home');
 
 Route::resource('produk', ProductsController::class);
 Route::resource('pengguna', UsersController::class);
