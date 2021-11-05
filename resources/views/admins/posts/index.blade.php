@@ -30,7 +30,13 @@
             <div class="card-inner">
                 <div class="card-title-group">
                     <div class="card-title">
-                        <h5 class="title">Semua postingan</h5>
+                        <h5 class="title">
+                            {{
+                                str($keyword)->trim()->isNotEmpty()
+                                    ? "Pencarian untuk '{$keyword}'"
+                                    : 'Semua postingan'
+                             }}
+                        </h5>
                     </div>
                     <div class="card-tools mr-n1">
                         <ul class="btn-toolbar gx-1">
