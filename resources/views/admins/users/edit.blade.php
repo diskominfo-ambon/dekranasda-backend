@@ -102,19 +102,27 @@
                             <div class="form-label-group">
                                 <label class="form-label">Status pengguna</label>
                             </div>
-                            <div class="form-pm-group">
+                              <div class="form-pm-group">
                                 <ul class="buysell-pm-list">
                                     <li class="buysell-pm-item">
                                         <input class="buysell-pm-control" type="radio" name="role" id="role-user" checked />
                                         <label class="buysell-pm-label" value="user" for="role-user">
-                                            <span class="pm-name">Pengguna Biasa</span>
+                                            <div class="d-flex flex-column">
+                                                <span class="pm-name">Pengguna Biasa</span>
+                                                <small class="text-gray">
+                                                    Pengguna hak akses untuk <strong>perajin</strong>
+                                                </small>
+                                            </div>
                                             <span class="pm-icon"><em class="icon ni ni-user-fill"></em></span>
                                         </label>
                                     </li>
                                     <li class="buysell-pm-item">
                                         <input class="buysell-pm-control" type="radio" name="role" value="admin" id="role-admin" />
                                         <label class="buysell-pm-label" for="role-admin">
-                                            <span class="pm-name">Pengguna Admin</span>
+                                            <div class="d-flex flex-column">
+                                                <span class="pm-name">Pengguna Admin</span>
+                                                <small class="text-gray">Pangguna dengan status ADMIN akan mendapatkan seluruh hak akses</small>
+                                            </div>
                                             <span class="pm-icon"><em class="icon ni ni-users-fill"></em></span>
                                         </label>
                                     </li>
@@ -133,9 +141,12 @@
 
 
 
-                        <div class="buysell-field form-action mt-5">
-                            <button class="btn btn-lg btn-primary" data-toggle="modal">
-                                Simpan perubahan
+                        <div class="buysell-field form-action">
+                            <a href="{{ route('admins.pengguna.index') }}" class="btn btn-white d-inline-flex align-items-center">
+                            <em class="icon ni ni-chevron-left mr-1"></em> Kembali
+                            </a>
+                            <button class="btn btn-primary ml-1 d-inline-flex align-items-center">
+                                Simpan <span class="fs-12px"><em class="icon ni ni-user-add-fill ml-1"></em></span>
                             </button>
                         </div><!-- .buysell-field -->
                     </form><!-- .buysell-form -->

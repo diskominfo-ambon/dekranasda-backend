@@ -27,6 +27,10 @@
     margin-top: 0;
   }
 }
+
+.buysell-pm-label::after {
+  background-color: #DA251A !important;
+}
 .btn-primary {
   background-color: #DA251A !important;
   border-color: #DA251A !important;
