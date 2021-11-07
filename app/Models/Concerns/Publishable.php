@@ -16,4 +16,10 @@ trait Publishable
     {
         return $this->whereNull('published');
     }
+
+
+    public function getIsPublishedAttribute(): bool
+    {
+        return !is_null($this?->published);
+    }
 }

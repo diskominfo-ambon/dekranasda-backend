@@ -80,14 +80,19 @@
                             <span class="tb-amount-sm">{{ $product->user->email }}</span>
                         </div>
                         <div class="nk-tb-col text-right tb-col-sm">
+                            @if ($product->isDiscount)
                             <span class="tb-amount">
                                 <div class="badge badge-primary mr-2">30%</div>{{ rupiah($product->price) }}
                             </span>
-                            <span class="tb-amount-sm">{{ rupiah($product->price) }}</span>
+                            @endif
+                            <span class="tb-amount{{ $product->isDiscount ? '-sm' : '' }}">{{ rupiah($product->price) }}</span>
                         </div>
                         <div class="nk-tb-col nk-tb-col-status">
-                            <div class="dot dot-success d-md-none"></div>
+                            @if ($product->isPublished)
                             <span class="badge badge-sm badge-dim badge-outline-success d-none d-md-inline-flex">Telah dipublikasi</span>
+                            @else
+                            <span class="badge badge-sm badge-dim badge-outline-warning d-none d-md-inline-flex">Tidak dipublikasi</span>
+                            @endif
                         </div>
                         <div class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-2">
@@ -99,9 +104,11 @@
                                         <a href="#" class="dropdown-toggle bg-white btn btn-sm btn-outline-light btn-icon" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt">
+                                                @if ($product->isPublished)
                                                 <li><a href="{{ route('admins.produk.edit', $product->id) }}"><em class="icon ni ni-edit"></em><span>Ubah produk</span></a></li>
+                                                @endif
                                                 <li><a href="#"><em class="icon ni ni-eye-off"></em><span>Nonaktifkan produk</span></a></li>
-                                                <li><a href="{{ route('admins.produk.destroy', $product->id) }}"><em class="icon ni ni-trash"></em><span>Hapus produk</span></a></li>
+                                                <li><a class="text-danger" href="{{ route('admins.produk.destroy', $product->id) }}"><em class="icon ni ni-trash"></em><span>Hapus produk</span></a></li>
                                             </ul>
                                         </div>
                                     </div>

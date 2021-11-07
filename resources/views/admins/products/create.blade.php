@@ -92,7 +92,7 @@
                 <div class="form-control-wrap">
                     <select name="categories[]" multiple class="form-select" data-search="on" data-ui="lg">
                         @foreach($categories as $category)
-                            <option value="{{ $category->slug }}">
+                            <option value="{{ $category->id }}">
                                 {{ $category->name }}
                             </option>
                         @endforeach
@@ -134,13 +134,13 @@
                 </div>
                 <div class="form-control-group">
                     <div class="custom-file">
-                        <input type="file" multiple id="attachment-input" placeholder="Contoh: Kain batik tual">
-                        <label class="custom-file-label" for="attachment-input">Jumlah unggahan 0</label>
+                        <input type="file" id="attachment-input" placeholder="Contoh: Kain batik tual">
+                        <label class="custom-file-label" for="attachment-input">Jumlah unggahan&nbsp;<span id="currentFileCount">0</span></label>
                     </div>
                 </div>
-                <div class="form-note-group">
-                    <span class="buysell-min form-note-alt">
-                        Kamu dapat menggungah max 3 gambar untuk setiap produk.
+                <div class="form-note-group mt-4">
+                    <span class="buysell-min form-note-alt border rounded p-1">
+                        Kamu dapat menggungah max 3 gambar untuk setiap produk • Max ukuran unggahan 700 KB.
                     </span>
                 </div>
 
@@ -154,31 +154,10 @@
             </div>
             {{-- end --}}
 
-            {{-- attachments --}}
-            <span class="mb-1 font-weight-bold d-block">Unggahan produk</span>
-            <div class="nk-file-item nk-file">
-                <div class="nk-file-item nk-file border px-2 py-2 rounded">
-                    <div class="nk-file-info">
-                        <div class="nk-file-title">
-                            <div class="nk-file-name">
-                                <div class="nk-file-name-text d-flex">
-                                    <a href="#" class="title">Proposal</a>
-                                    <div class="ml-2">
-                                        <a href="#" class="">Lihat</a>
-                                        <span class="d-inline-block text-gray fs-10px">•</span>
-                                        <a href="#" class="text-danger">Hapus</a>
-                                    </div>
-                                </div>
+            <div id="attachments"></div>
 
-                            </div>
-                        </div>
-                        <ul class="nk-file-desc">
-                            <li class="date">Ukuran</li>
-                            <li class="size">4.5 MB</li>
-                        </ul>
-                    </div>
-            </div>
-            {{-- end --}}
+            <div id="uploader-container"></div>
+            {{-- end
 
             {{-- submit --}}
             <div class="buysell-field form-action mt-5 d-lg-flex align-items-center justify-content-between d-sm-block">
@@ -199,4 +178,5 @@
 @section('script')
 <script src="{{ asset('js/dashlite/libs/editors/tinymce.js?ver=2.2.0') }}"></script>
 <script src="{{ asset('js/dashlite/editors.js?ver=2.2.0') }}"></script>
+<script src="{{ asset('js/dashlite/products/form.js?ver=2.2.2') }}"></script>
 @endsection

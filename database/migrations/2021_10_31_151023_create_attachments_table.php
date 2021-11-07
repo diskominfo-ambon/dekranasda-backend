@@ -20,8 +20,14 @@ class CreateAttachmentsTable extends Migration
             $table->string('path');
             $table->string('content_type');
             $table->text('metadata')->nullable();
-            $table->string('attachable_id');
-            $table->string('attachable_type');
+            /**
+             * TODO: Sementara dinonaktifkan.
+             *
+             * Untuk menghubugnkan relasi antara tabel [attachment] dengan [post/product]
+             * maka dibuat relasi one to one/many.
+             * $table->string('attachable_id');
+             * $table->string('attachable_type');
+             */
             $table->unsignedBigInteger('byte_size');
             $table->timestamps();
         });

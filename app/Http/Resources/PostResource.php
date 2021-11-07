@@ -23,7 +23,7 @@ class PostResource extends JsonResource
                 'published' => $this->published,
                 'content' => $this->content,
                 'views' => views($this->resource)->count(),
-                'cover' => new AttachmentResource($this->cover),
+                'attachments' => AttachmentResource::collection($this->attachments),
                 'created' => [
                     'calendar' => $this->created_at->isoFormat('LL'),
                     'full' => $this->created_at->isoFormat('LLLL'),

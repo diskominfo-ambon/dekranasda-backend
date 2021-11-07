@@ -35,7 +35,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $categories = Category::all(['name', 'slug']);
+        $categories = Category::all();
 
         return view('admins.products.create', compact('categories'));
     }
@@ -48,16 +48,21 @@ class ProductsController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        dump($request->validationData());
-        dd($request->all());
 
-        $product = Product::create($request->validationData());
+        [$categories, $attachments] = array_values(
+            $request->only('categories', 'attachments')
+        );
 
-        $product->categories()->attach($request->categories);
-        $product->attachments()->attach($request->attachments);
+        $product = Product::create(
+            $request->validationData()
+        );
+
+        $product->categories()->attach($categories);
+
+        $product->attachments()->attach($attachments);
 
         return redirect()
-            ->route('admins.produk')
+            ->route('admins.produk.index')
             ->with('message', 'Berhasil menambahkan produk baru');
 
     }
@@ -70,7 +75,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id)->first();
+        $product = Product::with(['categories', 'attachments'])->findOrFail($id);
 
         return view('admins.products.show', compact('product'));
     }
@@ -83,9 +88,13 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id)->first();
+        $product = Product::with(['categories', 'attachments'])
+            ->published()
+            ->findOrFail($id);
 
-        return view('admins.products.edit', compact('product'));
+        $categories = Category::all();
+
+        return view('admins.products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -97,12 +106,13 @@ class ProductsController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
-        dd($request->all());
         $product = Product::published()->findOrFail($id);
 
-        $product->update($request->getData());
+        $product->update($request->validationData());
 
-        $product->attachments()->sync($request->only('attachments'));
+        $product->attachments()->sync(
+            $request->attachments
+        );
 
         return redirect()
             ->route('admins.produk.index')

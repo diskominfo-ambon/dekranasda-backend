@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UploadersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +19,5 @@ use App\Http\Controllers\ProductsController;
 */
 
 Auth::routes();
+
+Route::resource('uploaders', UploadersController::class);

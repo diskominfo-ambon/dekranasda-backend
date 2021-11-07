@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="author" content="Softnio">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png">
     <!-- Page Title  -->
     <title>Home</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('css/dashlite/dashlite.min.css?ver=2.2.0') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashlite/theme.css?ver=2.2.6') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashlite/theme.css?ver=2.2.7') }}">
     @yield('head')
 </head>
 

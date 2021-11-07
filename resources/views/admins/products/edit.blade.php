@@ -5,7 +5,7 @@
 @section('content')
 <div class="buysell wide-xs m-auto">
     <div class="buysell-title text-center">
-        <h4 class="title">Buat produk kamu menarik!<span class="text-primary d-block mt-1">#perajinindonesia.</span></h4>
+        <h4 class="title">Ubah produk<span class="text-primary d-block mt-1">#perajinindonesia.</span></h4>
     </div><!-- .buysell-title -->
     <div class="buysell-block">
         <form action="#" class="buysell-form">
@@ -15,7 +15,7 @@
                     <label class="form-label" for="product-title">Nama produk</label>
                 </div>
                 <div class="form-control-group">
-                    <input type="text" class="form-control form-control-lg form-control-number" id="product-title" name="title" placeholder="Contoh: Kain batik tual" value="{{ old('title') }}">
+                    <input type="text" class="form-control form-control-lg form-control-number" id="product-title" name="title" placeholder="Contoh: Kain batik tual" value="{{ $product->title }}">
                 </div>
                 <div class="form-note-group">
                     <span class="buysell-min form-note-alt">
@@ -39,7 +39,7 @@
                     <label class="form-label" for="product-price">Harga</label>
                 </div>
                 <div class="form-control-group">
-                    <input type="number" class="form-control form-control-lg form-control-number" id="product-price" name="price" placeholder="Contoh: 20000">
+                    <input type="number" class="form-control form-control-lg form-control-number" id="product-price" name="price" value="{{ $product->price }}" placeholder="Contoh: 20000">
                     <div class="form-dropdown">
                         <div class="text">DISKON<span>/</span></div>
                         <div class="dropdown">
@@ -90,7 +90,7 @@
                 <div class="form-control-wrap">
                     <select name="categories[]" multiple class="form-select" data-search="on" data-ui="lg">
                         @foreach($categories as $category)
-                            <option value="{{ $category->slug }}">
+                            <option value="{{ $category->id }}" {{ $product->categories->contains($category) ? 'selected' : '' }}>
                                 {{ $category->name }}
                             </option>
                         @endforeach
@@ -113,7 +113,7 @@
                     <label class="form-label">Deskripsi</label>
                 </div>
                 <div class="form-pm-group">
-                    <textarea name="content" class="tinymce-toolbar form-control">Produk terbaik saya!</textarea>
+                    <textarea name="content" class="tinymce-toolbar form-control">{{ $product->content }}</textarea>
                 </div>
                 @error('content')
                 <div class="form-note-group">
@@ -133,12 +133,12 @@
                 <div class="form-control-group">
                     <div class="custom-file">
                         <input type="file" multiple id="attachment-input" placeholder="Contoh: Kain batik tual">
-                        <label class="custom-file-label" for="attachment-input">Jumlah unggahan 0</label>
+                        <label class="custom-file-label" for="attachment-input">Jumlah unggahan &nbsp;<span id="currentFileCount">{{ $product->attachments->count() }}</span></label>
                     </div>
                 </div>
-                <div class="form-note-group">
-                    <span class="buysell-min form-note-alt">
-                        Kamu dapat menggungah max 3 gambar untuk setiap produk.
+                <div class="form-note-group mt-4">
+                    <span class="buysell-min form-note-alt border rounded p-1">
+                        Kamu dapat menggungah max 3 gambar untuk setiap produk • Max ukuran unggahan 700 KB.
                     </span>
                 </div>
 
@@ -153,13 +153,30 @@
             {{-- end --}}
 
             {{-- attachments --}}
-
+            <div id="attachments"></div>
             {{-- end --}}
+
+
+            <div id="uploader-container">
+                @foreach($product->attachments as $attachment)
+                <div class="border px-2 py-1 rounded d-flex align-items-center justify-content-between">
+                    <div>
+                        <p class="m-0">{{ $attachment->original_filename }}</p>
+                        <small>Ukuran unggahan {{ round($attachment->byte_size / 1024) }} KB</small>
+                    </div>
+                    <div>
+                        <a href="{{ asset($attachment->path) }}" target="__blank" class="btn btn-sm">Lihat</a>
+                        <button type="button" class="btn btn-sm text-danger btn__rejected">Hapus</button>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
 
             {{-- submit --}}
             <div class="buysell-field form-action mt-5 d-lg-flex align-items-center justify-content-between d-sm-block">
                 <small class="text-base d-block mb-sm-2 mt-md-0">Catatan: Semua informasi mengenai pembelian akan diinfokan ke nomor telepon / WA pengguna.</small>
-                <a href="#" style="flex-basis: 40%;" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#buy-coin">Tambahkan produk</a>
+                <a href="#" style="flex-basis: 40%;" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#buy-coin">Simpan produk</a>
             </div>
             {{-- end --}}
         </form><!-- .buysell-form -->

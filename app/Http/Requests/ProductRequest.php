@@ -26,8 +26,9 @@ class ProductRequest extends FormRequest
         return [
             'title' => 'required',
             'content' => 'required',
-            'categories' => 'required',
-            'attachments' => 'required',
+            'categories.*' => 'required',
+            // 'attachments' => 'required|max:3',
+            'attachments.*' => 'required|numeric|max:3',
             'price' => 'required'
         ];
     }
@@ -40,7 +41,8 @@ class ProductRequest extends FormRequest
             'content' => 'Deskripsi produk',
             'price' => 'Harga',
             'categories' => 'Kategori',
-            'attachments' => 'Unggahan produk'
+            'attachments' => 'Unggahan produk',
+            'attachments.*' => 'Unggahan produk ke '
         ];
     }
 
@@ -55,7 +57,8 @@ class ProductRequest extends FormRequest
 
     public function validationData()
     {
-        return $this->except(['attachments', 'categories']);
+        return $this->merge(['published' => now()])
+            ->except(['attachments', 'categories']);
     }
 }
 

@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
     {
         Post::factory()
             ->count(10)
-            ->hasCover()
+            ->hasAttachments(1)
             ->create();
     }
 }

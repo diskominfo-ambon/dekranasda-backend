@@ -61,7 +61,7 @@ textarea {
 }
 
 .buysell .form-control-group .custom-file label {
-  height: 3.75rem;
+  height: 3.40rem;
   display: flex;
   align-items: center;
 }
@@ -81,7 +81,7 @@ textarea {
 
 .buysell .form-control-group .custom-file label::after {
   display: flex;
-  height: 3.75rem;
+  height: 3.40rem;
   align-items: center;
   justify-content: center;
   content: 'Pilih gambar';
@@ -109,4 +109,13 @@ textarea {
 
 .dashboard__product .card:last-child {
   border-width: 0;
+}
+
+
+#uploader-container div.border {
+  margin-top: 1rem;
+}
+
+#uploader-container div.border:first-child {
+  margin-top: 0;
 }
