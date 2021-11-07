@@ -97,7 +97,7 @@
                         <div class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-2">
                                 <li class="nk-tb-action-hidden">
-                                    <a href="#tranxDetails" data-toggle="modal" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Lihat produk"><em class="icon ni ni-eye-fill"></em></a>
+                                    <a href="{{ route('admins.produk.show', $product->id) }}" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Lihat produk"><em class="icon ni ni-eye-fill"></em></a>
                                 </li>
                                 <li>
                                     <div class="dropdown">

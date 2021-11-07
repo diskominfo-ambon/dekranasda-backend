@@ -4,25 +4,44 @@
 <div class="content-page wide-lg">
     <div class="nk-block-head nk-block-head-lg">
         <div class="nk-block-head-content">
-            <h2 class="nk-block-title fw-normal">Regular Page Title</h2>
+            <h3 class="nk-block-title fw-normal">
+                {{ $product->title }} • {{ rupiah($product->price) }}
+            </h3>
             <div class="nk-block-des">
-                <p class="lead">We love to share ideas! Visit our blog if you're looking for great articles or inspiration to get you going.</p>
+                <p class="lead">Ditambahkan pada {{ $product->created_at->isoFormat('LL') }} oleh {{ $product->user->name }}</p>
             </div>
         </div>
     </div><!-- .nk-block -->
     <div class="nk-block">
         <article class="entry">
-            <h3>Fuga eius ipsama dolores asperiores</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eius ipsam blanditiis voluptatem mollitia dolores asperiores ipsum rerum repellendus. Ullam et, quam eos blanditiis ipsum tempore minus quis laborum praesentium.</p>
-            <p>Popsam blanditiis voluptatem mollitia dolores asperiores ipsum rerum repellendus. Ullam et, quam eos blanditiis ipsum tempore.</p>
-            <img src="./images/slides/slide-b.jpg" alt="">
-            <h4>Mollitia dolores asperiores ipsum rerum repellendus</h4>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illoveritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.</p>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illoveritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.</p>
-            <h5>Perspiciatis unde omnis iste natus error sit voluptatem</h5>
-            <p>Mollitia dolores asperiores ipsum rerum repellendus Sed ut accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illoveritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+            <div id="carouselExConInd" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExConInd" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExConInd" data-slide-to="1"></li>
+                    <li data-target="#carouselExConInd" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    @foreach ($product->attachments as $attachment)
+                    <div class="carousel-item active">
+                        <img src="{{ asset($attachment->path) }}" class="d-block w-100" alt="carousel">
+                    </div>
+                    @endforeach
+                </div>
+                <a class="carousel-control-prev" href="#carouselExConInd" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExConInd" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <div class="mt-4">
+                <h4>Informasi produk</h4>
+                {!! $product->content !!}
+                <h4>Informasi pengguna</h4>
+                <p>Tidak diperlihatkan.</p>
+            </div>
         </article>
     </div><!-- .nk-block -->
 </div>
