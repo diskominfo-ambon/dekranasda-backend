@@ -8,10 +8,11 @@ use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Concerns\Publishable;
 
 class Post extends Model implements Viewable
 {
-    use HasFactory, InteractsWithViews;
+    use HasFactory, InteractsWithViews, Publishable;
 
     protected $removeViewsOnDelete = true;
 

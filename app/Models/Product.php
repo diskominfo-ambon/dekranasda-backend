@@ -11,10 +11,12 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use App\Models\Concerns\HasAttachment;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Concerns\InteractsWithKeyword;
+use App\Models\Concerns\Publishable;
 
 class Product extends Model implements Viewable
 {
-    use HasFactory, InteractsWithViews, HasAttachment, InteractsWithKeyword;
+    use HasFactory, InteractsWithViews, HasAttachment, InteractsWithKeyword,
+    Publishable;
 
     protected $removeViewsOnDelete = true;
 
@@ -33,14 +35,9 @@ class Product extends Model implements Viewable
         return $this->belongsTo(User::class);
     }
 
-    public function scopePublished(Builder $builder): Builder
+    public function scopeCurrentMonth(Builder $buidler): Builder
     {
-        return $this->whereNotNull('published');
-    }
-
-
-    public function scopeById(Builder $builder, $id): Builder
-    {
-        return $this->whereId($id);
+        return $this->whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year);
     }
 }

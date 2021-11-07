@@ -98,8 +98,7 @@ class ProductsController extends Controller
     public function update(ProductRequest $request, $id)
     {
         dd($request->all());
-        $product = Product::published()->byId($id)
-            ->first();
+        $product = Product::published()->findOrFail($id);
 
         $product->update($request->getData());
 

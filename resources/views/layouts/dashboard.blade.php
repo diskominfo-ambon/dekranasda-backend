@@ -11,7 +11,7 @@
     <title>Home</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('css/dashlite/dashlite.min.css?ver=2.2.0') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashlite/theme.css?ver=2.2.5') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashlite/theme.css?ver=2.2.6') }}">
     @yield('head')
 </head>
 
@@ -51,7 +51,7 @@
     <!-- app-root @e -->
     <!-- JavaScript -->
     <script src="{{ asset('js/dashlite/bundle.js?ver=2.2.0') }}"></script>
-    <script src="{{ asset('js/dashlite/scripts.js?ver=2.2.0') }}"></script>
+    <script src="{{ asset('js/dashlite/scripts.js?ver=2.2.1') }}"></script>
 
     @yield('script')
 </body>

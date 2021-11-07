@@ -97,3 +97,16 @@ textarea {
   margin: 0;
   position: relative;
 }
+
+.dashboard__product .card + .card {
+  margin-top: 10px;
+}
+
+.dashboard__product .card {
+  border-bottom: 1px solid #e1e1e1;
+  border-radius: 0;
+}
+
+.dashboard__product .card:last-child {
+  border-width: 0;
+}
