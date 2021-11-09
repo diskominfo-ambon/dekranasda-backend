@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +21,12 @@ class CreateProductsTable extends Migration
             $table->longText('content');
             $table->unsignedBigInteger('price');
             $table->datetime('deleted_at')->nullable();
-            $table->datetime('published')->nullable();
+            $table->enum('status', [
+                Product::PENDING,
+                Product::PUBLISHED,
+                Product::REJECTED
+            ])->default(Product::PENDING);
+
             $table->foreignId('user_id')->onDelete('cascade');
             $table->timestamps();
         });

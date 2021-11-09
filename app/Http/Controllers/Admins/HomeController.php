@@ -20,10 +20,8 @@ class HomeController extends Controller
     {
         /**
          * Find the product with the largest number of order page views.
-         *
-         * $products = Product::published()->orderByViews()->currentMonth()->limit(5)->get();
          */
-        $products = Product::unpublished()->limit(10)->get();
+        $products = Product::published()->currentMonth()->orderByViews()->limit(5)->get();
 
         return view('admins.home', compact('products'));
     }

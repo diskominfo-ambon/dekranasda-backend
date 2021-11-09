@@ -20,9 +20,9 @@ class ProductsController extends Controller
     {
         $keyword = $request->get('keyword', '');
 
-        $products = Product::published()
-            ->with('user')
+        $products = Product::with('user')
             ->byKeyword('title', $keyword)
+            ->published()
             ->paginate();
 
         return view('admins.products.index', compact('products', 'keyword'));

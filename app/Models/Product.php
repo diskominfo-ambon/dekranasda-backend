@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
-use App\Models\Concerns\Publishable;
 use App\Models\Concerns\HasAttachment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -16,14 +15,19 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Product extends Model implements Viewable
 {
-    use HasFactory, InteractsWithViews, HasAttachment, InteractsWithKeyword,
-    Publishable;
+    use HasFactory, InteractsWithViews, HasAttachment, InteractsWithKeyword;
 
     protected $removeViewsOnDelete = true;
 
     protected $guarded = ['id'];
 
     protected $with = ['categories'];
+
+    const PENDING = 'pending';
+
+    const PUBLISHED = 'published';
+
+    const REJECTED = 'rejected';
 
 
     public static function boot() {
@@ -51,6 +55,28 @@ class Product extends Model implements Viewable
 
         return $this->whereMonth('created_at', now()->month)
             ->whereYear('created_at', now()->year);
+    }
+
+
+    public function scopePublished(): Builder
+    {
+        return $this->whereStatus(self::PUBLISHED);
+    }
+
+    public function scopePending(): Builder
+    {
+        return $this->whereStatus(self::PENDING);
+    }
+
+
+    public function getIsPublishedAttribute(): bool
+    {
+        return $this?->status === self::PUBLISHED;
+    }
+
+    public function getIsRejectedAttribute(): bool
+    {
+        return $this?->status === self::REJECTED;
     }
 
 
