@@ -14,17 +14,17 @@
 <div class="nk-block nk-block-lg">
     <div class="nk-block-head-sm">
         <div class="nk-block-head-content">
-            <h5 class="nk-block-title title">10 Produk yang sering dilihat bulan ini</h5>
+            <h5 class="nk-block-title title">Beberapa produk yang sering dilihat bulan ini</h5>
         </div>
     </div>
-    <div class="row g-gs dashboard__product">
+    <div class="row dashboard__product">
         <div class="col-sm-12 col-md-6 col-lg-12">
             @forelse ( $products as $product)
-            <div class="card">
+            <div class="card p-2 m-0">
                 <div class="nk-wgw">
-                    <div class="nk-wgw-inner p-2">
-                        <div class="nk-wgw-balance">
-                            <h6 class="amount">{{ str($product->title)->title()->limit(70) }}<span class="currency currency-eur">#Oleh {{ $product->user->name }}</span></h6>
+                    <div class="nk-wgw-inner p-0">
+                        <div class="nk-wgw-balance p-0">
+                            <h6 class="amount" style="line-height: 2.3rem !important; font-size: 1.3rem;">{{ str($product->title)->title()->limit(70) }}<span class="currency currency-eur">#Oleh {{ $product->user->name }}</span></h6>
                             <div class="amount-sm mt-1 d-flex align-items-center">
                                 <span><em class="icon ni ni-calendar"></em> Ditambahkan pada {{ $product->created_at->isoFormat('LL') }}</span>
                                 <span class="mx-1">•</span>
