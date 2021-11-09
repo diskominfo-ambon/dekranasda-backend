@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -21,6 +22,11 @@ class RolePermissionSeeder extends Seeder
         ];
         $permissions = [];
 
-        Role::insert($roles);
+        foreach ($roles as $role) {
+            Role::create($role);
+        }
+
+        User::first()
+            ->assignRole('user');
     }
 }
