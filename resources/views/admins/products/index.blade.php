@@ -50,6 +50,9 @@
                 </div><!-- .card-title-group -->
             </div><!-- .card-inner -->
             <div class="card-inner p-0">
+                @if ($products->count() <= 0)
+                <h4 class="text-center py-5">Produk tidak tersedia</h4>
+                @else
                 <div class="nk-tb-list nk-tb-tnx">
                     <div class="nk-tb-item nk-tb-head">
                         <div class="nk-tb-col"><span>Nama produk</span></div>
@@ -118,6 +121,7 @@
                     </div><!-- .nk-tb-item -->
                     @endforeach
                 </div><!-- .nk-tb-list -->
+                @endif
             </div><!-- .card-inner -->
             <div class="card-inner">
                 {{ $products->links('pagination::bootstrap-4') }}
