@@ -27,6 +27,6 @@ class RolePermissionSeeder extends Seeder
         }
 
         User::first()
-            ->assignRole('user');
+            ->assignRole('admin');
     }
 }
