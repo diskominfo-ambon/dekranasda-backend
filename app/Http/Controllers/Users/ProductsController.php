@@ -61,7 +61,7 @@ class ProductsController extends Controller
         $product->attachments()->attach($attachments);
 
         return redirect()
-            ->route('users.produk.index')
+            ->route('produk.index')
             ->with('message', 'Berhasil menambahkan produk baru');
 
     }
