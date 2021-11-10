@@ -7,8 +7,8 @@
             <div class="nk-header-news d-none d-xl-block">
                 <div class="nk-news-list">
                     <a class="nk-news-item" href="#">
-                        <div class="nk-news-icon">
-                            <em class="icon ni ni-card-view"></em>
+                        <div class="nk-news-icon text-primary">
+                            <em class="icon ni ni-info text-primary"></em>
                         </div>
                         <div class="nk-news-text">
                             <p>

@@ -134,7 +134,7 @@
                 </div>
                 <div class="form-control-group">
                     <div class="custom-file">
-                        <input type="file" id="attachment-input" placeholder="Contoh: Kain batik tual">
+                        <input accept="image/jpeg, image/png" type="file" id="attachment-input" placeholder="Contoh: Kain batik tual">
                         <label class="custom-file-label" for="attachment-input">Jumlah unggahan&nbsp;<span id="currentFileCount">0</span></label>
                     </div>
                 </div>
