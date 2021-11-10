@@ -11,9 +11,8 @@ if (!function_exists('rupiah')) {
 
 if (!function_exists('str')) {
     function str($string): Stringable {
-        if (is_null($string)) return '';
 
-        return Str::of($string);
+        return Str::of($string ?? '');
     }
 }
 

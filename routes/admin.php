@@ -7,6 +7,7 @@ use App\Http\Controllers\Admins\ProductsController;
 use App\Http\Controllers\Admins\PostsController;
 use App\Http\Controllers\Admins\HomeController;
 use App\Http\Controllers\Admins\ProductConfirmationController;
+use App\Http\Controllers\Admins\CategoriesController;
 
 
 Route::get('/', [HomeController::class, 'index'])
@@ -19,7 +20,6 @@ Route::put('produk/konfirmasi', [ProductConfirmationController::class, 'update']
     ->name('produk.konfirmasi.update');
 
 Route::resource('produk', ProductsController::class);
-
-
+Route::resource('ketegori', CategoriesController::class, ['names' => 'categories']);
 Route::resource('pengguna', UsersController::class);
 Route::resource('post', PostsController::class);
