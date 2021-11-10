@@ -14,7 +14,7 @@ class ProductConfirmationController extends Controller
         $keyword = $request->get('keyword', '');
         $slug = $request->get('slug', '');
 
-        $products = Product::byKeyword('title', $keyword)
+        $products = Product::with('user')
             ->when(
                 Str::of($slug)
                     ->trim()
@@ -22,8 +22,9 @@ class ProductConfirmationController extends Controller
                 fn ($builder) => $builder->whereSlug($slug)
             )
             ->pending()
-            ->paginate(2);
-            
+            ->byKeyword('title', $keyword)
+            ->paginate(10);
+
         $products->append('keyword');
 
         return view('admins.products.confirmation', compact('products'));

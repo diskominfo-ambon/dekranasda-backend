@@ -19,7 +19,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h6 class="nk-block-title">Semua produk</h6>
+                            <h6 class="nk-block-title">Semua produk pending</h6>
                         </div>
                         <ul class="nk-block-tools gx-3">
                             <li>
@@ -79,8 +79,8 @@
                         </div>
                     </div><!-- .nk-tranx-item -->
                     @empty
-                    <div class="text-center">
-                        <h3>Produk belum tersedia</h3>
+                    <div class="text-center p-2">
+                        <h4>Produk belum tersedia</h4>
                     </div>
                     @endforelse
                 </div><!-- .card -->
