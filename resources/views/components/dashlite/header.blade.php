@@ -53,15 +53,17 @@
                                     </div>
                                 </div>
                             </div>
+                            @can('user')
                             <div class="dropdown-inner user-account-info">
                                 <h6 class="overline-title-alt">Jumlah produk kamu</h6>
                                 <div class="user-balance">12.395769</div>
     
                                 <a href="#" class="link"><span>Tambahkan produk</span> <em class="icon ni ni-wallet-out"></em></a>
                             </div>
+                            @endcan
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href="html/crypto/profile-security.html"><em class="icon ni ni-setting-alt"></em><span>Pengaturan Akun</span></a></li>
+                                    <li><a href="#"><em class="icon ni ni-setting-alt"></em><span>Pengaturan Akun</span></a></li>
                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Mode Gelap</span></a></li>
                                 </ul>
                             </div>

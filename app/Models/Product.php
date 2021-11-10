@@ -35,7 +35,6 @@ class Product extends Model implements Viewable
 
         self::creating(function ($model) {
             $model->slug = Str::of($model->title)->slug()->substr(0, 20) . '-'.Str::random();
-            $model->user_id = 3;
         });
     }
 

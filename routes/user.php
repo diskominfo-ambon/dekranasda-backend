@@ -6,6 +6,6 @@ use App\Http\Controllers\Users\HomeController;
 
 
 Route::get('/', [HomeController::class, 'index'])
-    ->name('users');
+    ->name('home');
 
 Route::resource('produk', ProductsController::class);

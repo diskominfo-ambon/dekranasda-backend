@@ -35,13 +35,15 @@ class LoginController extends Controller
     }
 
 
-    public function redirectPath()
+    public function authenticated($request, $user)
     {
-        $user = Auth::user();
+        
         if ($user->hasRole('user')) {
-            return route('home');
+            return redirect()
+                ->route('home');
         }
 
-        return route('admins.home');
+        return redirect()
+            ->route('admins.home');
     }
 }

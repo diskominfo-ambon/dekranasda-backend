@@ -21,7 +21,11 @@
         <!-- main @s -->
         <div class="nk-main ">
             <!-- sidebar @s -->
-            <x-dashlite.sidebar/>
+            @can('admin')
+            <x-dashlite.sidebar.admin/>
+            @else
+            <x-dashlite.sidebar.user/>
+            @endcan
             <!-- sidebar @e -->
             <!-- wrap @s -->
             <div class="nk-wrap">
