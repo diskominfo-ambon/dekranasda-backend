@@ -80,7 +80,11 @@
                             <span class="tb-amount">{{ $user->phone_number ?? 'Tidak tersedia' }}</span>
                         </div>
                         <div class="nk-tb-col nk-tb-col-status">
-                            <span class="badge badge-sm badge-dim badge-success d-none d-md-inline-flex">ADMIN</span>
+                            @if ($user->hasRole('admin'))
+                            <span class="badge badge-sm badge-dim badge-info d-none d-md-inline-flex">ADMIN</span>
+                            @else
+                            <span class="badge badge-sm badge-dim badge-secondary d-none d-md-inline-flex">PENGGUNA</span>
+                            @endif
                         </div>
                         <div class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-2">
