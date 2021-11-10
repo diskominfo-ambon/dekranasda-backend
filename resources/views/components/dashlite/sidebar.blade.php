@@ -11,7 +11,7 @@
                     <div class="user-account-actions">
                         <ul class="g-2 d-block">
                             <li class="w-100">
-                                <a href="#" class="btn btn-lg btn-primary">
+                                <a href="{{ route('admins.produk.create') }}" class="btn btn-lg btn-primary">
                                     <span><em class="icon ni ni-wallet-saving position-relative" style="top: 2px;"></em> Produk</span>
                                 </a>
                             </li>
