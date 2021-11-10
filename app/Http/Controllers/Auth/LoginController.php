@@ -30,6 +30,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+
         $this->middleware('guest')->except('logout');
     }
 
@@ -37,7 +38,6 @@ class LoginController extends Controller
     public function redirectPath()
     {
         $user = Auth::user();
-
         if ($user->hasRole('user')) {
             return route('home');
         }

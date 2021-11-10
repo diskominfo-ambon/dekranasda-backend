@@ -11,7 +11,9 @@
                             <em class="icon ni ni-card-view"></em>
                         </div>
                         <div class="nk-news-text">
-                            <p>Do you know the latest update of 2019? <span> A overview of our is now available on YouTube</span></p>
+                            <p>
+                               Butuh bantuan? hubungi layanan bantuan dekranasda
+                            </p>
                             <em class="icon ni ni-external"></em>
                         </div>
                     </a>
@@ -26,8 +28,12 @@
                                     <em class="icon ni ni-user-fill"></em>
                                 </div>
                                 <div class="user-info d-none d-md-block">
-                                    <div class="user-status user-status-unverified">ADMIN</div>
-                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                    <div class="user-status user-status-unverified">
+                                        {{ strtoupper(auth()->user()->roles()->first()->name) }}
+                                    </div>
+                                    <div class="user-name dropdown-indicator">
+                                        {{ auth()->user()->name }}
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -38,16 +44,20 @@
                                         <em class="icon ni ni-user-fill"></em>
                                     </div>
                                     <div class="user-info">
-                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                        <span class="sub-text">info@softnio.com</span>
+                                        <span class="lead-text">
+                                            {{ auth()->user()->name }}
+                                        </span>
+                                        <span class="sub-text">
+                                            {{ auth()->user()->email }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="dropdown-inner user-account-info">
-                                <h6 class="overline-title-alt">Nio Wallet Account</h6>
-                                <div class="user-balance">12.395769 <small class="currency currency-btc">BTC</small></div>
-                                <div class="user-balance-sub">Locked <span>0.344939 <span class="currency currency-btc">BTC</span></span></div>
-                                <a href="#" class="link"><span>Withdraw Funds</span> <em class="icon ni ni-wallet-out"></em></a>
+                                <h6 class="overline-title-alt">Jumlah produk kamu</h6>
+                                <div class="user-balance">12.395769</div>
+    
+                                <a href="#" class="link"><span>Tambahkan produk</span> <em class="icon ni ni-wallet-out"></em></a>
                             </div>
                             <div class="dropdown-inner">
                                 <ul class="link-list">
@@ -57,7 +67,12 @@
                             </div>
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Keluar</span></a></li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button class="btn btn-block"><em class="icon ni ni-signout"></em><span>Keluar</span></a>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -67,10 +82,6 @@
                             <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1">
-                            <div class="dropdown-head">
-                                <span class="sub-title nk-dropdown-title">Notifications</span>
-                                <a href="#">Mark All as Read</a>
-                            </div>
                             <div class="dropdown-body">
                                 <div class="nk-notification">
                                     <div class="nk-notification-item dropdown-inner">

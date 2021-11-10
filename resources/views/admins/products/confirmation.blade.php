@@ -29,9 +29,11 @@
                     </div>
                     <div class="search-wrap search-wrap-extend" data-search="search">
                         <div class="search-content">
-                            <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                            <input type="text" class="form-control form-control-sm border-transparent form-focus-none" placeholder="Quick search by user">
-                            <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                            <form>
+                                <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                <input type="text" class="form-control form-control-sm border-transparent form-focus-none" name="keyword" placeholder="Telesuri produk">
+                                <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                            </form>
                         </div>
                     </div><!-- .search-wrap -->
                 </div><!-- .nk-block-head -->

@@ -5,12 +5,26 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductConfirmationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::pending()->paginate(2);
+        $keyword = $request->get('keyword', '');
+        $slug = $request->get('slug', '');
+
+        $products = Product::byKeyword('title', $keyword)
+            ->when(
+                Str::of($slug)
+                    ->trim()
+                    ->isNotEmpty(),
+                fn ($builder) => $builder->whereSlug($slug)
+            )
+            ->pending()
+            ->paginate(2);
+            
+        $products->append('keyword');
 
         return view('admins.products.confirmation', compact('products'));
     }
