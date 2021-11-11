@@ -155,7 +155,7 @@
             {{-- attachments --}}
             <div id="attachments">
                 @foreach($product->attachments as $attachment)
-                    <input data-input-uniqid-id="{{ $attachment->id }}" text="number" readonly value="{{ $attachment->id }}"/>
+                    <input data-input-uniqid-id="{{ $attachment->id }}" name="attachments[]" class="d-none" text="number" readonly value="{{ $attachment->id }}"/>
                 @endforeach
             </div>
             {{-- end --}}
@@ -163,14 +163,14 @@
 
             <div id="uploader-container">
                 @foreach($product->attachments as $attachment)
-                <div class="border px-2 py-1 rounded d-flex align-items-center justify-content-between">
+                <div data-uniqid-id="{{ $attachment->id }}" class="border px-2 py-1 rounded d-flex align-items-center justify-content-between">
                     <div>
                         <p class="m-0">{{ $attachment->original_filename }}</p>
                         <small>Ukuran unggahan {{ round($attachment->byte_size / 1024) }} KB</small>
                     </div>
                     <div>
                         <a href="{{ asset($attachment->path) }}" target="__blank" class="btn btn-sm">Lihat</a>
-                        <button data-product="{{ json_encode(
+                        <button data-attachment="{{ json_encode(
                                 array_merge(
                                     $attachment->only(['id']),
                                     [

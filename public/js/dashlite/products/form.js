@@ -57,7 +57,9 @@ function main() {
 
 
   $('.btn__rejecteable').on('click', function () {
-    // handleRejectedFile({...result?.data, uniqidId})
+    const attachment = $(this).data().attachment;
+
+    handleRejectedFile(attachment);
   });
 
   $('input[type="file"]').on('change', async function (event) {
