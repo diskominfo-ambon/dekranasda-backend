@@ -119,3 +119,26 @@ textarea {
 #uploader-container div.border:first-child {
   margin-top: 0;
 }
+
+
+details summary {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #364a63;
+}
+
+details p, .product__price {
+  font-size: 1.1rem;
+}
+
+
+.badge-primary {
+  background-color: #DA251A !important;
+  color: white !important;
+}
+
+.badge-dim.badge-primary {
+  background-color: #ffe8e7 !important;
+  color: #DA251A !important;
+  border-color: #7d7170 !important;
+}

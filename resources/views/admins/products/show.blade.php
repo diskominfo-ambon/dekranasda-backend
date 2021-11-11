@@ -1,29 +1,52 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="content-page wide-lg">
-    <div class="nk-block-head nk-block-head-lg">
-        <div class="nk-block-head-content">
-            <h3 class="nk-block-title fw-normal">
-                {{ $product->title }} • {{ rupiah($product->price) }}
-            </h3>
-            <div class="nk-block-des">
-                <p class="lead">Ditambahkan pada {{ $product->created_at->isoFormat('LL') }} oleh {{ $product->user->name }}</p>
+
+    @if ($product->isPublished)
+        <div class="alert alert-icon alert-light" role="alert">
+            <em class="icon ni ni-check-circle text-success"></em>
+            Produk ini memiliki status yang telah dikonfimasi.
+        </div>
+    @else
+        <div class="alert alert-icon alert-light" role="alert">
+            <em class="icon ni ni-alert-circle text-warning"></em>
+            Produk ini memiliki status pending
+        </div>
+    @endif
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="h-100 d-flex flex-column justify-content-md-center">
+                <h4 class="fw-semibold" style="line-height: 2rem;">
+                    {{ $product->title }}
+                </h4>
+                <p class="mt-1 mb-2">Ditambahkan pada {{ $product->created_at->isoFormat('LL') }} oleh {{ $product->user->name }}</p>
+                <div>
+                    @foreach ($product->categories as $category)
+                        <span class="badge badge-sm badge-dim badge-danger"> {{ $category->name }} </span>
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div><!-- .nk-block -->
-    <div class="nk-block">
-        <article class="entry">
+        @php
+            $attachment = $product->attachments->first();
+            $attachments = $product->attachments->skip(1);
+        @endphp
+        <div class="col-sm-12 col-md-6">
             <div id="carouselExConInd" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExConInd" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExConInd" data-slide-to="1"></li>
-                    <li data-target="#carouselExConInd" data-slide-to="2"></li>
+                    <li data-target="#carouselExConInd" data-slide-to="{{ $attachment->id }}" class="active"></li>
+                    @foreach ($attachments as $attachment)
+                    <li data-target="#carouselExConInd" data-slide-to="{{ $attachment->id }}"></li>
+                    @endforeach
                 </ol>
                 <div class="carousel-inner">
-                    @foreach ($product->attachments as $attachment)
                     <div class="carousel-item active">
-                        <img src="{{ asset($attachment->path) }}" class="d-block w-100" alt="carousel">
+                        <img src="{{ asset($attachment->path) }}" class="d-block active w-100" alt="Gambar: {{ $attachment->original_filename }}">
+                    </div>
+                    @foreach ($attachments as $attachment)
+                    <div class="carousel-item">
+                        <img src="{{ asset($attachment->path) }}" class="d-block w-100" alt="Gambar: {{ $attachment->original_filename }}">
                     </div>
                     @endforeach
                 </div>
@@ -36,13 +59,34 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <div class="mt-4">
-                <h4>Informasi produk</h4>
-                {!! $product->content !!}
-                <h4>Informasi pengguna</h4>
-                <p>Tidak diperlihatkan.</p>
-            </div>
-        </article>
-    </div><!-- .nk-block -->
-</div>
+
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-12">
+            <details open>
+                <summary>Informasi produk</summary>
+                <p>
+                    {{ $product->content }}
+                </p>
+            </details>
+        </div>
+
+        <div class="col-sm-12 col-md-12 mt-2">
+            <p class="product__price">Harga <span class="text-primary fw-bold">{{ rupiah($product->price) }}</span></p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-sm-12 col-md-12">
+            <details>
+                <summary>Informasi pengguna</summary>
+                <p>
+                    Tidak disertakan.
+                </p>
+            </details>
+        </div>
+    </div>
+
+
 @endsection

@@ -56,23 +56,39 @@
                             </div>
                         </div>
                         <div class="tranx-col">
-                            <div class="d-flex">
-                                    <div>
-                                        <form method="post" action="{{ route('admins.products.confirmation.update', $product->id) }}">
-                                            @method('PUT')
-                                            @csrf
-                                            <button onclick="return confirm('yakin ingin konfirmasi produk ini?')" class="d-flex align-items-center btn btn-sm text-secondary mr-1">
-                                                <span class="mr-1"><em class="icon ni ni-check"></em></span>
-                                                Konfirmasi
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <button data-toggle="modal" data-target="#modalProductRejected" data-action-url="{{ route('admins.products.confirmation.destroy', $product->id) }}" type="button" class="btn-rejected btn bg-white text-primary btn-sm d-flex align-items-center">
-                                        <span class="mr-1"><em class="icon ni ni-cross"></em></span>
-                                        Batalkan
-                                    </button>
+                            <ul class="nk-tb-actions gx-2">
+                                <li class="nk-tb-action">
+                                    <a href="{{ route('admins.products.show', $product->id) }}" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Lihat produk"><em class="icon ni ni-eye-fill"></em></a>
+                                </li>
+                                <li>
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle bg-white btn btn-sm btn-outline-light btn-icon" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul class="link-list-opt">
 
-                            </div>
+                                                <li>
+                                                    <form class="d-block" method="post" action="{{ route('admins.products.confirmation.update', $product->id) }}">
+                                                        @method('PUT')
+                                                        @csrf
+                                                        <button onclick="return confirm('yakin ingin konfirmasi produk ini?')" class="fw-normal btn text-secondary">
+                                                            <span class="mr-2"><em class="icon ni ni-check"></em></span>
+                                                            Konfirmasi
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#modalProductRejected"
+                                                    data-action-url="{{ route('admins.products.confirmation.destroy', $product->id) }}"
+                                                    class="btn-rejected text-primary">
+                                                        <span class="mr-2"><em class="icon ni ni-cross"></em></span>
+                                                        Batalkan
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div><!-- .nk-tranx-item -->
                     @empty
