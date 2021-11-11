@@ -4,54 +4,47 @@ namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Notifications\ProductConfirmed;
+use App\Notifications\ProductRejected;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class ProductConfirmationController extends Controller
 {
     public function index(Request $request)
     {
         $keyword = $request->get('keyword', '');
-        $slug = $request->get('slug', '');
 
-        $products = Product::with('user')
-            ->when(
-                Str::of($slug)
-                    ->trim()
-                    ->isNotEmpty(),
-                fn ($builder) => $builder->whereSlug($slug)
-            )
+        $products = Product::latest()
             ->pending()
             ->byKeyword('title', $keyword)
-            ->paginate(10);
+            ->paginate(20);
 
         $products->append('keyword');
 
-        return view('admins.products.confirmation', compact('products'));
+        return view('admins.products.confirmation', compact('products', 'keyword'));
     }
 
 
-    public function update(int $id)
+    public function update(Request $request, int $id)
     {
         $product = Product::pending()->findOrFail($id);
-
-        $product->status = Product::PUBLISHED;
+        $product->user->notify( new ProductConfirmed($product));
 
         return redirect()
             ->back()
-            ->message('message', 'Berhasil mengkonfirmasi produk');
+            ->with('message', 'Berhasil mengkonfirmasi produk');
 
     }
 
-    public function destroy(int $id)
+    public function destroy(Request $request, int $id)
     {
-        $product = Product::pending()->findOrFail($id);
 
-        $product->status = Product::REJECTED;
+        $product = Product::pending()->findOrFail($id);
+        $product->user->notify(new ProductRejected($product, $request->content));
 
         return redirect()
             ->back()
-            ->message('message', 'Berhasil membatalkan produk');
+            ->with('message', 'Berhasil membatalkan produk');
 
     }
 }

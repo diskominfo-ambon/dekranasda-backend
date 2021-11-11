@@ -9,9 +9,10 @@ trait InteractsWithKeyword
 {
     function scopeByKeyword(Builder $builder, $key, $keyword): Builder
     {
-        return $this->when(
-            Str::of($keyword)->trim()->isNotEmpty(),
-            fn ($builder) => $builder->where($key, 'like', "%{$keyword}%")
-        );
+        if ( Str::of($keyword)->trim()->isNotEmpty() ) {
+            $builder->where($key, 'like', "%{$keyword}%");
+        }
+
+        return $builder;
     }
 }

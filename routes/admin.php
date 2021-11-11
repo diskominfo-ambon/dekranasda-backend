@@ -14,10 +14,13 @@ Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
 Route::get('produk/konfirmasi', [ProductConfirmationController::class, 'index'])
-    ->name('produk.konfirmasi');
+    ->name('products.confirmation');
 
-Route::put('produk/konfirmasi', [ProductConfirmationController::class, 'update'])
-    ->name('produk.konfirmasi.update');
+Route::put('produk/konfirmasi/{id}', [ProductConfirmationController::class, 'update'])
+    ->name('products.confirmation.update');
+
+Route::delete('produk/konfirmasi/{id}', [ProductConfirmationController::class, 'destroy'])
+    ->name('products.confirmation.destroy');
 
 Route::resource('produk', ProductsController::class);
 Route::resource('ketegori', CategoriesController::class, ['names' => 'categories']);

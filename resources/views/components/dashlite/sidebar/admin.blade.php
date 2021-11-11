@@ -89,12 +89,6 @@
                                 <span class="nk-menu-text">Produk</span>
                             </a>
                         </li>
-                        <li class="nk-menu-item">
-                            <a href="{{ route('admins.produk.konfirmasi') }}" class="nk-menu-link">
-                                <span class="nk-menu-icon"><em class="icon ni ni-check-fill-c"></em></span>
-                                <span class="nk-menu-text">Konfirmasi Produk</span>
-                            </a>
-                        </li>
 
                         <li class="nk-menu-item">
                             <a href="{{ route('admins.post.index') }}" class="nk-menu-link">

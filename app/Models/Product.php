@@ -21,7 +21,7 @@ class Product extends Model implements Viewable
 
     protected $guarded = ['id'];
 
-    protected $with = ['categories'];
+    protected $with = ['categories', 'user'];
 
     const PENDING = 'pending';
 
