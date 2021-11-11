@@ -54,6 +54,12 @@ function main() {
   const MAX_FILES_UPLOADER = 3;
   let currentFiles = [];
 
+
+
+  $('.btn__rejecteable').on('click', function () {
+    // handleRejectedFile({...result?.data, uniqidId})
+  });
+
   $('input[type="file"]').on('change', async function (event) {
     const target = event.target;
     const file = target.files[0];

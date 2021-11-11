@@ -133,7 +133,7 @@
                 <div class="form-control-group">
                     <div class="custom-file">
                         <input type="file" multiple id="attachment-input" placeholder="Contoh: Kain batik tual">
-                        <label class="custom-file-label" for="attachment-input">Jumlah unggahan &nbsp;<span id="currentFileCount">{{ $product->attachments->count() }}</span></label>
+                        <label class="custom-file-label" for="attachment-input">Jumlah unggahan &nbsp;<span data-count="{{ $product->attachments->count() }}" id="currentFileCount">{{ $product->attachments->count() }}</span></label>
                     </div>
                 </div>
                 <div class="form-note-group mt-4">
@@ -153,7 +153,11 @@
             {{-- end --}}
 
             {{-- attachments --}}
-            <div id="attachments"></div>
+            <div id="attachments">
+                @foreach($product->attachments as $attachment)
+                    <input data-input-uniqid-id="{{ $attachment->id }}" text="number" readonly value="{{ $attachment->id }}"/>
+                @endforeach
+            </div>
             {{-- end --}}
 
 
@@ -166,7 +170,15 @@
                     </div>
                     <div>
                         <a href="{{ asset($attachment->path) }}" target="__blank" class="btn btn-sm">Lihat</a>
-                        <button type="button" class="btn btn-sm text-danger btn__rejected">Hapus</button>
+                        <button data-product="{{ json_encode(
+                                array_merge(
+                                    $attachment->only(['id']),
+                                    [
+                                        'uniqidId' => $attachment->id,
+                                        'originalFilename' => $attachment->original_filename
+                                    ]
+                                )
+                            ) }}" type="button" class="btn btn-sm text-danger btn__rejected btn__rejecteable">Hapus</button>
                     </div>
                 </div>
                 @endforeach
@@ -192,4 +204,5 @@
 @section('script')
 <script src="{{ asset('js/dashlite/libs/editors/tinymce.js?ver=2.2.0') }}"></script>
 <script src="{{ asset('js/dashlite/editors.js?ver=2.2.0') }}"></script>
+<script src="{{ asset('js/dashlite/products/form.js?ver=2.2.2') }}"></script>
 @endsection
