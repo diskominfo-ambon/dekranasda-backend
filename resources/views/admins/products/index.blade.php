@@ -30,7 +30,7 @@
     <div class="alert-text">
         <h6>Anda {{ $countPendingProducts }} pengajuan produk!</h6>
         <p>
-            Yuk lihat beberapa produk yang butuh kamu <b>konfirmasi</b> <a href="{{ route('admins.products.confirmation') }}" class="text-primary">lihat disini</a>.
+            Yuk lihat beberapa produk yang butuh kamu <b>konfirmasi</b> <a href="{{ route('admins.products.confirmation.index') }}" class="text-primary">lihat disini</a>.
         </p>
     </div>
 </div>
