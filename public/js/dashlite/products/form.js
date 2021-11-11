@@ -173,8 +173,8 @@ function main() {
         currentFiles = currentFiles.filter( current => current.uniqidId !== uniqidId);
 
         $(`#uploader-container div[data-uniqid-id="${uniqidId}"], #uploader-container div[data-progress-uniqid-id="${uniqidId}"]`)
-        .parent()
-        .remove();
+          .parent()
+          .remove();
 
         $(`input[data-input-uniqid-id="${uniqidId}"]`)
           .remove();

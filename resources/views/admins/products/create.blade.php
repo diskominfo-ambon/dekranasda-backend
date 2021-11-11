@@ -178,5 +178,5 @@
 @section('script')
 <script src="{{ asset('js/dashlite/libs/editors/tinymce.js?ver=2.2.0') }}"></script>
 <script src="{{ asset('js/dashlite/editors.js?ver=2.2.0') }}"></script>
-<script src="{{ asset('js/dashlite/products/form.js?ver=2.2.2') }}"></script>
+<script src="{{ asset('js/dashlite/products/form.js?ver=2.2.3') }}"></script>
 @endsection

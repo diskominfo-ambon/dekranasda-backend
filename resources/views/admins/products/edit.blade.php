@@ -8,7 +8,9 @@
         <h4 class="title">Ubah produk<span class="text-primary d-block mt-1">#perajinindonesia.</span></h4>
     </div><!-- .buysell-title -->
     <div class="buysell-block">
-        <form action="#" class="buysell-form">
+        <form method="post" action="{{ route('admins.produk.update', $product->id) }}" class="buysell-form">
+            @csrf
+            @method('PUT')
             {{-- nama produk --}}
             <div class="buysell-field form-group">
                 <div class="form-label-group">
@@ -163,12 +165,12 @@
 
             <div id="uploader-container">
                 @foreach($product->attachments as $attachment)
-                <div data-uniqid-id="{{ $attachment->id }}" class="border px-2 py-1 rounded d-flex align-items-center justify-content-between">
+                <div class="border px-2 py-1 rounded d-flex align-items-center justify-content-between">
                     <div>
                         <p class="m-0">{{ $attachment->original_filename }}</p>
                         <small>Ukuran unggahan {{ round($attachment->byte_size / 1024) }} KB</small>
                     </div>
-                    <div>
+                    <div data-uniqid-id="{{ $attachment->id }}">
                         <a href="{{ asset($attachment->path) }}" target="__blank" class="btn btn-sm">Lihat</a>
                         <button data-attachment="{{ json_encode(
                                 array_merge(
@@ -188,7 +190,7 @@
             {{-- submit --}}
             <div class="buysell-field form-action mt-5 d-lg-flex align-items-center justify-content-between d-sm-block">
                 <small class="text-base d-block mb-sm-2 mt-md-0">Catatan: Semua informasi mengenai pembelian akan diinfokan ke nomor telepon / WA pengguna.</small>
-                <a href="#" style="flex-basis: 40%;" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#buy-coin">Simpan produk</a>
+                <button type="submit" style="flex-basis: 40%;" class="btn btn-lg btn-primary btn-block">Simpan produk</button>
             </div>
             {{-- end --}}
         </form><!-- .buysell-form -->
