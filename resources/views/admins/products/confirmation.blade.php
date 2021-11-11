@@ -61,7 +61,7 @@
                                         <form method="post" action="{{ route('admins.products.confirmation.update', $product->id) }}">
                                             @method('PUT')
                                             @csrf
-                                            <button onclick="return confirm('yakin ingin konfirmasi produk ini?')" class="d-flex align-items-center btn btn-sm btn-secondary text-success mr-1">
+                                            <button onclick="return confirm('yakin ingin konfirmasi produk ini?')" class="d-flex align-items-center btn btn-sm text-secondary mr-1">
                                                 <span class="mr-1"><em class="icon ni ni-check"></em></span>
                                                 Konfirmasi
                                             </button>
