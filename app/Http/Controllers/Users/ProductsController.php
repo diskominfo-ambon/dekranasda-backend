@@ -109,7 +109,6 @@ class ProductsController extends Controller
     {
         $product = Auth::user()
             ->products()
-            ->published()
             ->findOrFail($id);
 
         $product->update($request->validationData());

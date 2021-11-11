@@ -107,11 +107,9 @@
                                         <a href="#" class="dropdown-toggle bg-white btn btn-sm btn-outline-light btn-icon" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt">
-                                                @if ($product->isPublished)
-                                                <li><a href="{{ route('admins.products.edit', $product->id) }}"><em class="icon ni ni-edit"></em><span>Ubah produk</span></a></li>
-                                                @endif
+                                                <li><a href="{{ route('products.edit', $product->id) }}"><em class="icon ni ni-edit"></em><span>Ubah produk</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-eye-off"></em><span>Nonaktifkan produk</span></a></li>
-                                                <li><a class="text-danger" href="{{ route('admins.products.destroy', $product->id) }}"><em class="icon ni ni-trash"></em><span>Hapus produk</span></a></li>
+                                                <li><a class="text-danger" href="{{ route('products.destroy', $product->id) }}"><em class="icon ni ni-trash"></em><span>Hapus produk</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
