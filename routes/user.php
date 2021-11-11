@@ -8,4 +8,4 @@ use App\Http\Controllers\Users\HomeController;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
-Route::resource('produk', ProductsController::class);
+Route::resource('produk', ProductsController::class, ['names' => 'products']);
