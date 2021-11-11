@@ -29,20 +29,20 @@
             </div>
         </div>
         @php
-            $attachment = $product->attachments->first();
-            $attachments = $product->attachments->skip(1);
+            $attachment = $product?->attachments->first();
+            $attachments = $product?->attachments->skip(1);
         @endphp
         <div class="col-sm-12 col-md-6">
             <div id="carouselExConInd" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExConInd" data-slide-to="{{ $attachment->id }}" class="active"></li>
+                    <li data-target="#carouselExConInd" data-slide-to="{{ $attachment?->id }}" class="active"></li>
                     @foreach ($attachments as $attachment)
                     <li data-target="#carouselExConInd" data-slide-to="{{ $attachment->id }}"></li>
                     @endforeach
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset($attachment->path) }}" class="d-block active w-100" alt="Gambar: {{ $attachment->original_filename }}">
+                        <img src="{{ asset($attachment?->path) }}" class="d-block active w-100" alt="Gambar: {{ $attachment?->original_filename }}">
                     </div>
                     @foreach ($attachments as $attachment)
                     <div class="carousel-item">
@@ -66,9 +66,7 @@
         <div class="col-sm-12 col-md-12">
             <details open>
                 <summary>Informasi produk</summary>
-                <p>
-                    {{ $product->content }}
-                </p>
+                {!! $product->content !!}
             </details>
         </div>
 

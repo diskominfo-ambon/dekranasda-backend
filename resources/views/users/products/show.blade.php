@@ -66,9 +66,7 @@
         <div class="col-sm-12 col-md-12">
             <details open>
                 <summary>Informasi produk</summary>
-                <p>
-                    {{ $product->content }}
-                </p>
+                {!! $product->content !!}
             </details>
         </div>
 
