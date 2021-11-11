@@ -17,7 +17,7 @@
                     <ul class="nk-block-tools g-3">
                         <li><a href="#" class="btn btn-white btn-dim btn-outline-light"><em class="icon ni ni-download"></em><span>Download</span></a></li>
                         <li class="nk-block-tools-opt">
-                            <a href="{{ route('admins.produk.create') }}" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
+                            <a href="{{ route('admins.products.create') }}" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
                         </li>
                     </ul>
                 </div>
@@ -110,7 +110,7 @@
                         <div class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-2">
                                 <li class="nk-tb-action-hidden">
-                                    <a href="{{ route('admins.produk.show', $product->id) }}" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Lihat produk"><em class="icon ni ni-eye-fill"></em></a>
+                                    <a href="{{ route('admins.products.show', $product->id) }}" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Lihat produk"><em class="icon ni ni-eye-fill"></em></a>
                                 </li>
                                 <li>
                                     <div class="dropdown">
@@ -118,10 +118,10 @@
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt">
                                                 @if ($product->isPublished)
-                                                <li><a href="{{ route('admins.produk.edit', $product->id) }}"><em class="icon ni ni-edit"></em><span>Ubah produk</span></a></li>
+                                                <li><a href="{{ route('admins.products.edit', $product->id) }}"><em class="icon ni ni-edit"></em><span>Ubah produk</span></a></li>
                                                 @endif
                                                 <li><a href="#"><em class="icon ni ni-eye-off"></em><span>Nonaktifkan produk</span></a></li>
-                                                <li><a class="text-danger" href="{{ route('admins.produk.destroy', $product->id) }}"><em class="icon ni ni-trash"></em><span>Hapus produk</span></a></li>
+                                                <li><a class="text-danger" href="{{ route('admins.products.destroy', $product->id) }}"><em class="icon ni ni-trash"></em><span>Hapus produk</span></a></li>
                                             </ul>
                                         </div>
                                     </div>

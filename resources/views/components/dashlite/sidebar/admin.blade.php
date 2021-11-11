@@ -11,7 +11,7 @@
                     <div class="user-account-actions">
                         <ul class="g-2 d-block">
                             <li class="w-100">
-                                <a href="{{ route('admins.produk.create') }}" class="btn btn-lg btn-primary">
+                                <a href="{{ route('admins.products.create') }}" class="btn btn-lg btn-primary">
                                     <span><em class="icon ni ni-wallet-saving position-relative" style="top: 2px;"></em> Produk</span>
                                 </a>
                             </li>
@@ -84,7 +84,7 @@
                             </a>
                         </li>
                         <li class="nk-menu-item">
-                            <a href="{{ route('admins.produk.index') }}" class="nk-menu-link">
+                            <a href="{{ route('admins.products.index') }}" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-todo-fill"></em></span>
                                 <span class="nk-menu-text">Produk</span>
                             </a>

@@ -63,7 +63,7 @@ class ProductsController extends Controller
         $product->attachments()->attach($attachments);
 
         return redirect()
-            ->route('admins.produk.index')
+            ->route('admins.products.index')
             ->with('message', 'Berhasil menambahkan produk baru');
 
     }
@@ -116,7 +116,7 @@ class ProductsController extends Controller
         );
 
         return redirect()
-            ->route('admins.produk.index')
+            ->route('admins.products.index')
             ->with('message', 'Berhasil menyimpan perubahan produk.');
     }
 

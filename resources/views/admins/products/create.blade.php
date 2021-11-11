@@ -8,7 +8,7 @@
         <h4 class="title">Buat produk kamu menarik!<span class="text-primary d-block mt-1">#perajinindonesia.</span></h4>
     </div><!-- .buysell-title -->
     <div class="buysell-block">
-        <form action="{{ route('admins.produk.store') }}" class="buysell-form" method="POST">
+        <form action="{{ route('admins.products.store') }}" class="buysell-form" method="POST">
             @csrf
             @method('POST')
             {{-- nama produk --}}

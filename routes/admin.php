@@ -13,16 +13,11 @@ use App\Http\Controllers\Admins\CategoriesController;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
-Route::get('produk/konfirmasi', [ProductConfirmationController::class, 'index'])
-    ->name('products.confirmation');
-
-Route::put('produk/konfirmasi/{id}', [ProductConfirmationController::class, 'update'])
-    ->name('products.confirmation.update');
-
-Route::delete('produk/konfirmasi/{id}', [ProductConfirmationController::class, 'destroy'])
-    ->name('products.confirmation.destroy');
-
-Route::resource('produk', ProductsController::class);
+Route::resource('produk/konfirmasi', ProductConfirmationController::class, [
+    'names' => 'products.confirmation',
+    'only' => ['index', 'update', 'destroy']
+]);
+Route::resource('produk', ProductsController::class, ['names' => 'products']);
 Route::resource('ketegori', CategoriesController::class, ['names' => 'categories']);
 Route::resource('pengguna', UsersController::class, [
     'names' => 'users',

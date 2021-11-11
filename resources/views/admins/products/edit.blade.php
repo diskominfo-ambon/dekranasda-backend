@@ -8,7 +8,7 @@
         <h4 class="title">Ubah produk<span class="text-primary d-block mt-1">#perajinindonesia.</span></h4>
     </div><!-- .buysell-title -->
     <div class="buysell-block">
-        <form method="post" action="{{ route('admins.produk.update', $product->id) }}" class="buysell-form">
+        <form method="post" action="{{ route('admins.products.update', $product->id) }}" class="buysell-form">
             @csrf
             @method('PUT')
             {{-- nama produk --}}
