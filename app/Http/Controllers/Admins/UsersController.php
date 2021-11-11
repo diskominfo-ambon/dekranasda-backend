@@ -44,10 +44,12 @@ class UsersController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = User::create($request->all());
+
+        $user = User::create($request->except('role'));
+        $user->assignRole($request->role);
 
         return redirect()
-            ->route('admins.pengguna.index')
+            ->route('admins.users.index')
             ->with('message', 'Berhasil menambahkan pengguna '. $user->name);
     }
 
@@ -75,10 +77,11 @@ class UsersController extends Controller
     public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        $user->update($request->except('role'));
+        $user->syncRoles([$request->role]);
 
         return redirect()
-            ->route('admins.pengguna.index')
+            ->route('admins.users.index')
             ->with('message', 'Berhasil menyimpan perubahan pengguna');
     }
 

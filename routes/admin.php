@@ -21,5 +21,10 @@ Route::put('produk/konfirmasi', [ProductConfirmationController::class, 'update']
 
 Route::resource('produk', ProductsController::class);
 Route::resource('ketegori', CategoriesController::class, ['names' => 'categories']);
-Route::resource('pengguna', UsersController::class);
+Route::resource('pengguna', UsersController::class, [
+    'names' => 'users',
+    'parameters' => [
+        'pengguna' => 'id'
+    ]
+]);
 Route::resource('post', PostsController::class);

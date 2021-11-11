@@ -17,7 +17,7 @@
                     <ul class="nk-block-tools g-3">
                         <li><a href="#" class="btn btn-white btn-dim btn-outline-light"><em class="icon ni ni-download"></em><span>Download</span></a></li>
                         <li class="nk-block-tools-opt">
-                            <a href="{{ route('admins.pengguna.create') }}" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
+                            <a href="{{ route('admins.users.create') }}" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
                         </li>
                     </ul>
                 </div>
@@ -89,17 +89,17 @@
                         <div class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-2">
                                 <li class="nk-tb-action-hidden">
-                                    <a href="{{ route('admins.pengguna.edit', $user->id) }}" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Ubah pengguna"><em class="icon ni ni-edit"></em></a>
+                                    <a href="{{ route('admins.users.edit', $user->id) }}" class="bg-white btn btn-sm btn-outline-light btn-icon btn-tooltip" title="Ubah pengguna"><em class="icon ni ni-edit"></em></a>
                                 </li>
                                 <li>
                                     <div class="dropdown">
                                         <a href="#" class="dropdown-toggle bg-white btn btn-sm btn-outline-light btn-icon" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt">
-                                                <li><a href="{{ route('admins.pengguna.edit', $user->id) }}"><em class="icon ni ni-edit"></em><span>Ubah pengguna</span></a></li>
+                                                <li><a href="{{ route('admins.users.edit', $user->id) }}"><em class="icon ni ni-edit"></em><span>Ubah pengguna</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-cross-round"></em><span>Nonaktifkan pengguna</span></a></li>
                                                 <li>
-                                                    <form method="post" action="{{ route('admins.pengguna.destroy', $user->id) }}">
+                                                    <form method="post" action="{{ route('admins.users.destroy', $user->id) }}">
                                                         @csrf
                                                         @method('delete')
                                                         <button class="btn btn-white btn-block font-weight-normal text-danger" onclick="return confirm('Yakin ingin menghapus?')"><em class="icon ni ni-trash"></em><span>Hapus pengguna</span></button>

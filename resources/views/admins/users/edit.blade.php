@@ -11,7 +11,7 @@
                     </h4>
                 </div><!-- .buysell-title -->
                 <div class="buysell-block">
-                    <form action="{{ route('admins.pengguna.update', $user->id) }}" class="buysell-form" method="post">
+                    <form action="{{ route('admins.users.update', $user->id) }}" class="buysell-form" method="post">
                         @csrf
                         @method('put')
                         <div class="buysell-field form-group">
@@ -105,7 +105,7 @@
                               <div class="form-pm-group">
                                 <ul class="buysell-pm-list">
                                     <li class="buysell-pm-item">
-                                        <input class="buysell-pm-control" type="radio" name="role" id="role-user" checked />
+                                        <input class="buysell-pm-control" type="radio" name="role" value="user" id="role-user" checked />
                                         <label class="buysell-pm-label" value="user" for="role-user">
                                             <div class="d-flex flex-column">
                                                 <span class="pm-name">Pengguna Biasa</span>
@@ -142,7 +142,7 @@
 
 
                         <div class="buysell-field form-action">
-                            <a href="{{ route('admins.pengguna.index') }}" class="btn btn-white d-inline-flex align-items-center">
+                            <a href="{{ route('admins.users.index') }}" class="btn btn-white d-inline-flex align-items-center">
                             <em class="icon ni ni-chevron-left mr-1"></em> Kembali
                             </a>
                             <button class="btn btn-primary ml-1 d-inline-flex align-items-center">

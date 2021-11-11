@@ -28,9 +28,9 @@ class UserRequest extends FormRequest
     {
         return collect([
             'name' => ['required'],
-            // 'email' => ['required', 'email', 'unique:users,email'],
+            'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required'],
-            // 'phone_number' => ['required', 'numeric', 'unique:users,phone_number'],
+            'phone_number' => ['required', 'numeric', 'unique:users,phone_number'],
         ]);
     }
 
@@ -42,22 +42,18 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $rules = $this->originalRules();
-        $user = $this->user();
+        $user = User::findOrFail($this->id);
 
         if (strtolower($this->getMethod()) === 'put') {
             $rules->forget('password');
+            $addRules = [
+                'email' => ['required', 'email', Rule::unique(User::class)->ignore($user->email, 'email')],
+                'phone_number' => ['required', 'numeric', Rule::unique(User::class)->ignore($user->phone_number, 'phone_number')],
+            ];
 
-            $rules->put('email', [
-                'required',
-                'email',
-                Rule::unique(User::class)
-                    ->ignore($user->email, 'email')
-            ])->put('phone_number', [
-                'required',
-                'numeric',
-                Rule::unique(User::class)
-                    ->ignore($user->phone_number, 'phone_number')
-            ]);
+            foreach ($addRules as $key => $rule) {
+                $rules->put($key, $rule);
+            }
         }
 
         return $rules->toArray();
