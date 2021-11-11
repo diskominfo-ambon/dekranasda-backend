@@ -25,15 +25,16 @@
         </div><!-- .nk-block-head-content -->
     </div><!-- .nk-block-between -->
 </div><!-- .nk-block-head -->
-
+@if ($countPendingProducts > 0)
 <div class="alert alert-pro alert-warning shadow-none border-top border-bottom border-right mb-3">
     <div class="alert-text">
-        <h6>Anda pengajuan produk!</h6>
+        <h6>Anda {{ $countPendingProducts }} pengajuan produk!</h6>
         <p>
             Yuk lihat beberapa produk yang butuh kamu <b>konfirmasi</b> <a href="{{ route('admins.products.confirmation') }}" class="text-primary">lihat disini</a>.
         </p>
     </div>
 </div>
+@endif
 <div class="nk-block">
     <div class="card card-bordered card-stretch">
         <div class="card-inner-group">

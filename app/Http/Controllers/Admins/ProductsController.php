@@ -24,8 +24,9 @@ class ProductsController extends Controller
             ->byKeyword('title', $keyword)
             ->published()
             ->paginate();
+        $countPendingProducts = Product::pending()->count();
 
-        return view('admins.products.index', compact('products', 'keyword'));
+        return view('admins.products.index', compact('products', 'keyword', 'countPendingProducts'));
     }
 
     /**
