@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ProductIncreaseVisitorController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UploadersController;
 
@@ -20,4 +21,10 @@ use App\Http\Controllers\UploadersController;
 
 Auth::routes();
 
-Route::resource('uploaders', UploadersController::class);
+Route::get('/views/products/{id}', [ProductIncreaseVisitorController::class, 'store'])
+    ->name('products.increase_visitor.index')
+    ->middleware('is_ajax');
+
+Route::resource('uploaders', UploadersController::class, [
+    'middleware' => ['auth', 'is_ajax']
+]);

@@ -6,8 +6,8 @@ use App\Models\Product;
 use App\Models\Attachment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Requests\UploaderRequest;
-use Illuminate\Support\Facades\Response;
 use App\Http\Resources\AttachmentResource;
 
 class UploadersController extends Controller
@@ -36,7 +36,8 @@ class UploadersController extends Controller
         Attachment::findOrFail($id)
             ->delete();
 
-        return Response::json([
+
+        return new JsonResponse([
             'data' => [
                 'message' => 'Successfully deleted.'
             ],
