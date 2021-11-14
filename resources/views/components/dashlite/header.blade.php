@@ -90,17 +90,21 @@
                                 <div class="nk-notification">
                                     @forelse (auth()->user()->unreadNotifications as $notification)
                                         <div class="nk-notification-item dropdown-inner">
-                                            <div class="nk-notification-icon">
-                                                <em class="icon icon-circle bg-success-dim ni ni-curve-down-left"></em>
-                                            </div>
                                             <div class="nk-notification-content">
                                                 <div class="nk-notification-text">
-                                                    <a class="text-primary" href="{{ $notification['route'] }}">
+                                                    <a class="text-secondary fw-bold" href="{{ $notification['route'] }}">
                                                         {{ $notification->data['message'] }}
                                                     </a>
+                                                    @if ( array_key_exists('content', $notification->data) )
+                                                    <p class="m-0 mt-1">
+                                                        {{
+                                                            $notification->data['content']
+                                                        }}
+                                                    </p>
+                                                    @endif
                                                 </div>
-                                                <div class="nk-notification-time">
-                                                    {{ $notification->created_at->isoFormat('LL') }}
+                                                <div class="nk-notification-time mt-1">
+                                                    Ditambahkan pada {{ $notification->created_at->isoFormat('LL') }}
                                                 </div>
                                             </div>
                                         </div><!-- .dropdown-inner -->
