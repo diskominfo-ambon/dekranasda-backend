@@ -53,7 +53,7 @@ class ProductsController extends Controller
      */
     public function store(ProductRequest $request)
     {
-
+        dd($request->all());
         [$categories, $attachments] = array_values(
             $request->only('categories', 'attachments')
         );

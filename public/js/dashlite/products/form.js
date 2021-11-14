@@ -153,6 +153,20 @@ function main() {
     }
   });
 
+
+
+
+  $('.discount-input').on('click', function () {
+    const discount = parseInt($(this).val());
+
+    $('#discount-text').text(
+      discount > 0
+        ? `${discount}%`
+        : 'TIDAK ADA'
+    );
+  });
+
+
   /**
    * Menyelesaikan penghapusan file saat ditolak.
    *

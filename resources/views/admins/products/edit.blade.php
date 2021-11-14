@@ -49,7 +49,7 @@
                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right text-center">
                                 <ul class="link-list-plain">
                                     <li>
-                                        <input id="discount-nothing" class="d-none" type="radio" value="" name="discount">
+                                        <input id="discount-nothing" class="d-none" type="radio" value="0" name="discount" checked>
                                         <label for="discount-nothing">Tidak ada</label>
                                     </li>
                                     @php
@@ -57,7 +57,7 @@
                                     @endphp
                                     @while($discount <= 50)
                                     <li>
-                                        <input id="discount-{{ $discount }}" class="d-none" type="radio" value="" name="discount">
+                                        <input id="discount-{{ $discount }}" class="d-none discount-input" type="radio" value="{{ $discount }}" name="discount">
                                         <label for="discount-{{ $discount }}" class="text-primary">{{ $discount }}%</label>
                                     </li>
                                     @php

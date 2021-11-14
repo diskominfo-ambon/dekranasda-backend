@@ -45,11 +45,11 @@
                     <div class="form-dropdown">
                         <div class="text">DISKON<span>/</span></div>
                         <div class="dropdown">
-                            <a href="#" class="dropdown-indicator-caret" data-toggle="dropdown" data-offset="0,2">TIDAK ADA</a>
+                            <a href="#" class="dropdown-indicator-caret" data-toggle="dropdown" data-offset="0,2" id="discount-text">TIDAK ADA</a>
                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right text-center">
                                 <ul class="link-list-plain">
                                     <li>
-                                        <input id="discount-nothing" class="d-none" type="radio" value="" name="discount">
+                                        <input checked id="discount-nothing" class="discount-input d-none" type="radio" name="discount" value="0">
                                         <label for="discount-nothing">Tidak ada</label>
                                     </li>
                                     @php
@@ -57,7 +57,7 @@
                                     @endphp
                                     @while($discount <= 50)
                                     <li>
-                                        <input id="discount-{{ $discount }}" class="d-none" type="radio" value="" name="discount">
+                                        <input id="discount-{{ $discount }}" class="discount-input d-none" type="radio" value="{{ $discount }}" name="discount">
                                         <label for="discount-{{ $discount }}" class="text-primary">{{ $discount }}%</label>
                                     </li>
                                     @php
@@ -178,5 +178,5 @@
 @section('script')
 <script src="{{ asset('js/dashlite/libs/editors/tinymce.js?ver=2.2.0') }}"></script>
 <script src="{{ asset('js/dashlite/editors.js?ver=2.2.0') }}"></script>
-<script src="{{ asset('js/dashlite/products/form.js?ver=2.2.2') }}"></script>
+<script src="{{ asset('js/dashlite/products/form.js?ver=2.2.3') }}"></script>
 @endsection
