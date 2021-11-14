@@ -28,7 +28,8 @@
 <div class="nk-block">
     <div class="card card-bordered card-stretch">
         <div class="card-inner-group">
-            <div class="card-inner">
+
+            <form method="GET" class="card-inner position-relative card-tools-toggle">
                 <div class="card-title-group">
                     <div class="card-title">
 
@@ -77,23 +78,30 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="row gx-6 gy-3">
+                                                <div class="col-12">
+                                                    <button type="submit" class="border btn-gray btn btn-sm"><em class="icon ni ni-search"></em> <span>Telusuri</span></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div><!-- .filter-wg -->
                                 </div><!-- .dropdown -->
                             </li>
                         </ul><!-- .btn-toolbar -->
                     </div><!-- .card-tools -->
-                    <form method="GET" class="card-search search-wrap" data-search="search">
-                        <div class="search-content d-flex align-items-center">
+                </div>
+
+                <div class="card-search search-wrap" data-search="search">
+                    <div class="card-body">
+                        <div class="search-content">
                             <a href="#" class="mr-2 search-back border btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
                             <input autocomplete="off" type="text" name="keyword" class="form-control border-transparent form-focus-none" placeholder="Telusuri nama produk yang ingin kamu cari. Contoh: Kain batik" value="{{ $keyword }}">
 
-                            <button class="ml-2 border btn-white btn"><em class="icon ni ni-search"></em> Telusuri</button>
-
+                            <button type="submit" class="search-submit ml-2 border btn-white btn"><em class="icon ni ni-search"></em> Telusuri</button>
                         </div>
-                    </form>
-                </div><!-- .card-title-group -->
-            </div><!-- .card-inner -->
+                    </div>
+                </div>
+            </form><!-- .card-inner -->
             <div class="card-inner p-0">
                 @if ($products->count() <= 0)
                 <h4 class="text-center py-5">Produk tidak tersedia</h4>
