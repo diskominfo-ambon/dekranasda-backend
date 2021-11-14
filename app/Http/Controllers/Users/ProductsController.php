@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Validator;
 
 class ProductsController extends Controller
 {
@@ -53,16 +54,14 @@ class ProductsController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        dd($request->all());
+
         [$categories, $attachments] = array_values(
             $request->only('categories', 'attachments')
         );
 
         $product = Auth::user()
             ->products()
-            ->create(
-                $request->validationData()
-            );
+            ->create($request->validationData());
 
         $product->categories()->attach($categories);
 
@@ -98,7 +97,6 @@ class ProductsController extends Controller
         $product = Auth::user()
             ->products()
             ->with(['categories', 'attachments'])
-            ->published()
             ->findOrFail($id);
 
         $categories = Category::all();
