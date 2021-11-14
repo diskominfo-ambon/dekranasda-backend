@@ -22,7 +22,7 @@
             <div class="card card-bordered dashed h-100">
                 <div class="nk-wgw-add">
                     <div class="nk-wgw-inner">
-                        <a href="{{ route('produk.create') }}">
+                        <a href="{{ route('products.create') }}">
                             <div class="add-icon">
                                 <em class="icon ni ni-plus"></em>
                             </div>
@@ -42,15 +42,15 @@
                     <div class="nk-wgw-inner">
                         <a class="nk-wgw-name" href="html/crypto/wallet-bitcoin.html">
                             <div class="nk-wgw-icon bg-light">
-                                <em class="icon ni ni-wallet-fill text-warning"></em>
+                                <em class="icon ni ni-todo-fill text-warning"></em>
                             </div>
                             <h5 class="nk-wgw-title text-secondary fw-bold">PENDING</h5>
                         </a>
                         <div class="nk-wgw-balance">
-                            <div class="amount" style="font-size: 1.2rem;">
+                            <a href="{{ route('products.show', $product->id) }}" class="amount" style="font-size: 1rem; line-height: 1.5; color: #454545 !important;">
                                 {{ str($product->title)->limit(50) }}
-                            </div>
-                            <div class="amount-smm mt-1">
+                            </a>
+                            <div class="amount-smm mt-2">
                                 {{ $product->created_at->isoFormat('LL') }}
                             </div>
                         </div>
@@ -73,5 +73,10 @@
         <h4 class="text-center text-gray">Tidak tersedia untuk bulan ini.</h4>
         @endforelse
     </div><!-- .row -->
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ route('products.index')  }}?status=pending" class="text-primary fw-bold">Lihat produk lainnya &rarr;</a>
+        </div>
+    </div>
 </div><!-- .nk-block -->
 @endsection
