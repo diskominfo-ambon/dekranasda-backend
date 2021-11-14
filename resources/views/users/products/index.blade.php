@@ -96,7 +96,7 @@
                     <div class="nk-tb-item">
                         <div class="nk-tb-col">
                             <div class="nk-tnx-type">
-                                <div class="nk-tnx-type-icon bg-success-dim text-success">
+                                <div class="nk-tnx-type-icon bg-gray-dim {{ $product->isPublished ? 'text-success' : 'text-warning' }}">
                                     <em class="icon ni ni-wallet-fill"></em>
                                 </div>
                                 <div class="nk-tnx-type-text">
