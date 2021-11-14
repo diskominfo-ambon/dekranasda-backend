@@ -106,7 +106,7 @@ class ProductsController extends Controller
 
         $categories = Category::all();
 
-        return view('admins.products.edit', compact('product', 'categories'));
+        return view('users.products.edit', compact('product', 'categories'));
     }
 
     /**

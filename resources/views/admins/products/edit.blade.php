@@ -45,11 +45,16 @@
                     <div class="form-dropdown">
                         <div class="text">DISKON<span>/</span></div>
                         <div class="dropdown">
-                            <a href="#" class="dropdown-indicator-caret" data-toggle="dropdown" data-offset="0,2">TIDAK ADA</a>
+                            <a href="#" class="dropdown-indicator-caret" data-toggle="dropdown" data-offset="0,2">
+                                {{ $product->isDiscount
+                                    ? $product->discount .'%'
+                                    : 'TIDAK ADA'
+                                 }}
+                            </a>
                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right text-center">
                                 <ul class="link-list-plain">
                                     <li>
-                                        <input id="discount-nothing" class="d-none" type="radio" value="0" name="discount" checked>
+                                        <input id="discount-nothing" class="d-none" type="radio" value="0" name="discount" {{ $product->isDiscount && 'checked' }}>
                                         <label for="discount-nothing">Tidak ada</label>
                                     </li>
                                     @php
@@ -57,8 +62,13 @@
                                     @endphp
                                     @while($discount <= 50)
                                     <li>
+                                        @if ($product->discount == $discount)
+                                        <input id="discount-{{ $discount }}" class="d-none discount-input" checked type="radio" value="{{ $discount }}" name="discount">
+                                        <label for="discount-{{ $discount }}" class="bg-light text-dark">{{ $discount }}%</label>
+                                        @else
                                         <input id="discount-{{ $discount }}" class="d-none discount-input" type="radio" value="{{ $discount }}" name="discount">
                                         <label for="discount-{{ $discount }}" class="text-primary">{{ $discount }}%</label>
+                                        @endif
                                     </li>
                                     @php
                                         $discount += 10;
