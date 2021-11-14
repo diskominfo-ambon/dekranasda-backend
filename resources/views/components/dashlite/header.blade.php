@@ -63,7 +63,13 @@
                             @endcan
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href="#"><em class="icon ni ni-setting-alt"></em><span>Pengaturan Akun</span></a></li>
+                                    <li>
+                                        @role('admin')
+                                        <a href="#"><em class="icon ni ni-setting-alt"></em><span>Pengaturan Akun</span></a>
+                                        @else
+                                        <a href="{{ route('profiles.edit') }}"><em class="icon ni ni-setting-alt"></em><span>Pengaturan Akun</span></a>
+                                        @endrole
+                                    </li>
                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Mode Gelap</span></a></li>
                                 </ul>
                             </div>
