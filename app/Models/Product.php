@@ -57,14 +57,14 @@ class Product extends Model implements Viewable
     }
 
 
-    public function scopePublished(): Builder
+    public function scopePublished(Builder $buidler): Builder
     {
-        return $this->whereStatus(self::PUBLISHED);
+        return $buidler->whereStatus(self::PUBLISHED);
     }
 
-    public function scopePending(): Builder
+    public function scopePending(Builder $buidler): Builder
     {
-        return $this->whereStatus(self::PENDING);
+        return $buidler->whereStatus(self::PENDING);
     }
 
 

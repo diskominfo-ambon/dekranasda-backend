@@ -135,6 +135,7 @@ details p, .product__price {
 .badge-primary {
   background-color: #DA251A !important;
   color: white !important;
+  border-color: rgb(132, 52, 46) !important;
 }
 
 .badge-dim.badge-primary {

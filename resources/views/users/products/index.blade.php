@@ -138,10 +138,18 @@
                         <div class="nk-tb-col text-right tb-col-sm">
                             @if ($product->isDiscount)
                             <span class="tb-amount">
-                                <div class="badge badge-primary mr-2">30%</div>{{ rupiah($product->price) }}
+                                <div class="badge badge-primary mr-2">30%</div>
+                                {{ rupiah(
+                                    $product->price - ( $product->discount * $product->price / 100 )
+                                ) }}
                             </span>
+                            <span class="tb-amount-sm">
+                                <del>{{ rupiah($product->price) }}</del>
+                            </span>
+                            @else
+
+                            <span class="tb-amount">{{ rupiah($product->price) }}</span>
                             @endif
-                            <span class="tb-amount{{ $product->isDiscount ? '-sm' : '' }}">{{ rupiah($product->price) }}</span>
                         </div>
                         <div class="nk-tb-col nk-tb-col-status">
                             @if ($product->isPublished)

@@ -12,7 +12,7 @@
     <title>Home</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ asset('css/dashlite/dashlite.min.css?ver=2.2.0') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashlite/theme.css?ver=2.2.11') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashlite/theme.css?ver=2.2.12') }}">
     @yield('head')
 </head>
 
