@@ -23,6 +23,7 @@ class Product extends Model implements Viewable
 
     protected $with = ['categories', 'user'];
 
+
     const PENDING = 'pending';
 
     const PUBLISHED = 'published';

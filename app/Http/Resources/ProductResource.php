@@ -24,7 +24,9 @@ class ProductResource extends JsonResource
             'price' => $this->price,
             'priceToRupiah' => rupiah($this->price),
             'categories' => CategoryResource::collection($this->categories),
-            'published' => $this->published,
+            'status' => $this->status,
+            'discount' => $this->discont,
+            'isDiscount' => $this->isDiscount,
             'views' => views($this->resource)->count(),
             'attachments' => AttachmentResource::collection($this->attachments),
             'created' => [
