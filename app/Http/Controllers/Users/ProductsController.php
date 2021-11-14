@@ -27,9 +27,7 @@ class ProductsController extends Controller
             ->products()
             ->byKeyword('title', $keyword)
             ->when(
-                Str::of($status)
-                    ->trim()
-                    ->isNotEmpty(),
+                in_array($status, array_keys($productStatus)),
                 fn ($builder) => $builder->whereStatus($status)
             )
             ->paginate(20);

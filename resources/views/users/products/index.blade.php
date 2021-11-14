@@ -35,10 +35,11 @@
 
                         <h5 class="title">
                             @if ($keyword || $status)
-                            Pencarian produk {{ $keyword }} {{ $status ? ' status '. $productStatus[$status]: '' }}
+                            Pencarian produk {{ $keyword }} {{ in_array($status, array_keys($productStatus)) ? ' status '. $productStatus[$status] : '' }}
                             @else
                             Semua produk
                             @endif
+
                         </h5>
                     </div>
                     <div class="card-tools mr-n1">
@@ -68,6 +69,7 @@
                                             <div class="row gx-6 gy-3">
                                                 <div class="col-12">
                                                     <select name="status" class="form-select">
+                                                        <option value="all">Semua</option>
                                                         @foreach ($productStatus as $key => $val)
                                                             @if ($status === $key)
                                                             <option value="{{ $key }}" selected>{{ ucfirst($val) }}</option>
