@@ -41,10 +41,41 @@
                         </ul><!-- .btn-toolbar -->
                     </div><!-- .card-tools -->
                     <form method="GET" class="card-search search-wrap" data-search="search">
-                        <div class="search-content">
-                            <a href="#" class="search-back border btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                        <div class="search-content d-flex align-items-center">
+                            <a href="#" class="mr-2 search-back border btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
                             <input autocomplete="off" type="text" name="keyword" class="form-control border-transparent form-focus-none" placeholder="Telusuri nama produk yang ingin kamu cari. Contoh: Kain batik" value="{{ $keyword }}">
-                            <button class="search-submit border btn-white btn"><em class="icon ni ni-search mr-1"></em> Telusuri</button>
+
+                            <div class="d-flex">
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
+                                        <div class="dot dot-primary"></div>
+                                        <em class="icon ni ni-filter-alt"></em>
+                                    </a>
+                                    <div class="filter-wg dropdown-menu dropdown-menu-md dropdown-menu-right">
+                                        <div class="dropdown-head">
+                                            <span class="sub-title dropdown-title">Filter status produk</span>
+                                            <div class="dropdown">
+                                                <a href="#" class="btn btn-sm btn-icon">
+                                                    <em class="icon ni ni-cross"></em>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-body dropdown-body-rg">
+                                            <div class="row gx-6 gy-3">
+                                                <div class="col-12">
+                                                    <select name="" id="" class="form-select">
+                                                        <option value="pending">Pending</option>
+                                                        <option value="published">Dikonfimasi</option>
+                                                        <option value="rejected">Ditolak</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .filter-wg -->
+                                </div><!-- .dropdown -->
+                                <button class="ml-2 border btn-white btn"><em class="icon ni ni-search mr-1"></em> Telusuri</button>
+                            </div>
+
                         </div>
                     </form>
                 </div><!-- .card-title-group -->

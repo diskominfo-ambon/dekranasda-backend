@@ -66,16 +66,16 @@ textarea {
   align-items: center;
 }
 
-.select2 {
+.buysell-field .select2 {
   height: 3.75rem;
 }
 
-.select2 .select2-selection__rendered li.select2-selection__choice {
+.buysell-field .select2 .select2-selection__rendered li.select2-selection__choice {
   display: flex;
   align-items: center;
 }
 
-.select2 .select2-selection, .select2 .select2-selection__rendered {
+.buysell-field .select2 .select2-selection, .select2 .select2-selection__rendered {
   height: 100%;
 }
 

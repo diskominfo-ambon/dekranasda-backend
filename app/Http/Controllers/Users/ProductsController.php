@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
@@ -14,11 +15,18 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('keyword', '');
+        $status = $request->get('status', '');
 
         $products = Auth::user()
             ->products()
             ->pending()
             ->byKeyword('title', $keyword)
+            ->when(
+                Str::of($status)
+                    ->trim()
+                    ->isNotEmpty(),
+                fn ($builder) => $builder->whereStatus($status)
+            )
             ->paginate(20);
 
         return view('users.products.index', compact('products', 'keyword'));
