@@ -90,7 +90,7 @@
                     <label class="form-label">Kategori</label>
                 </div>
                 <div class="form-control-wrap">
-                    <select name="categories[]" multiple class="form-select" data-search="on" data-ui="lg">
+                    <select name="categories[]" class="form-select" data-ui="lg" data-placeholder="Telusuri kategori produk" multiple>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ $product->categories->contains($category) ? 'selected' : '' }}>
                                 {{ $category->name }}

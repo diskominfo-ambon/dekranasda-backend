@@ -31,24 +31,27 @@
             <div class="card-inner">
                 <div class="card-title-group">
                     <div class="card-title">
-                        <h5 class="title">Semua produk</h5>
+
+                        <h5 class="title">
+                            @if ($keyword || $status)
+                            Pencarian produk {{ $keyword }} {{ $status ? ' status '. $productStatus[$status]: '' }}
+                            @else
+                            Semua produk
+                            @endif
+                        </h5>
                     </div>
                     <div class="card-tools mr-n1">
                         <ul class="btn-toolbar gx-1">
                             <li>
                                 <a href="#" class="search-toggle border toggle-search btn btn-icon" data-target="search"><em class="icon ni ni-search"></em></a>
                             </li><!-- li -->
-                        </ul><!-- .btn-toolbar -->
-                    </div><!-- .card-tools -->
-                    <form method="GET" class="card-search search-wrap" data-search="search">
-                        <div class="search-content d-flex align-items-center">
-                            <a href="#" class="mr-2 search-back border btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                            <input autocomplete="off" type="text" name="keyword" class="form-control border-transparent form-focus-none" placeholder="Telusuri nama produk yang ingin kamu cari. Contoh: Kain batik" value="{{ $keyword }}">
-
-                            <div class="d-flex">
+                            <li class="btn-toolbar-sep"></li>
+                            <li>
                                 <div class="dropdown">
-                                    <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
+                                    <a href="#" class="border btn btn-icon dropdown-toggle" data-toggle="dropdown">
+                                        @if ($status)
                                         <div class="dot dot-primary"></div>
+                                        @endif
                                         <em class="icon ni ni-filter-alt"></em>
                                     </a>
                                     <div class="filter-wg dropdown-menu dropdown-menu-md dropdown-menu-right">
@@ -63,18 +66,29 @@
                                         <div class="dropdown-body dropdown-body-rg">
                                             <div class="row gx-6 gy-3">
                                                 <div class="col-12">
-                                                    <select name="" id="" class="form-select">
-                                                        <option value="pending">Pending</option>
-                                                        <option value="published">Dikonfimasi</option>
-                                                        <option value="rejected">Ditolak</option>
+                                                    <select name="status" class="form-select">
+                                                        @foreach ($productStatus as $key => $val)
+                                                            @if ($status === $key)
+                                                            <option value="{{ $key }}" selected>{{ ucfirst($val) }}</option>
+                                                            @continue
+                                                            @endif
+                                                            <option value="{{ $key }}">{{ ucfirst($val) }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div><!-- .filter-wg -->
                                 </div><!-- .dropdown -->
-                                <button class="ml-2 border btn-white btn"><em class="icon ni ni-search mr-1"></em> Telusuri</button>
-                            </div>
+                            </li>
+                        </ul><!-- .btn-toolbar -->
+                    </div><!-- .card-tools -->
+                    <form method="GET" class="card-search search-wrap" data-search="search">
+                        <div class="search-content d-flex align-items-center">
+                            <a href="#" class="mr-2 search-back border btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                            <input autocomplete="off" type="text" name="keyword" class="form-control border-transparent form-focus-none" placeholder="Telusuri nama produk yang ingin kamu cari. Contoh: Kain batik" value="{{ $keyword }}">
+
+                            <button class="ml-2 border btn-white btn"><em class="icon ni ni-search"></em> Telusuri</button>
 
                         </div>
                     </form>

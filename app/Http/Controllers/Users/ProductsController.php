@@ -15,6 +15,11 @@ class ProductsController extends Controller
 {
     public function index(Request $request)
     {
+        $productStatus = [
+            Product::PENDING => 'pending',
+            Product::PUBLISHED => 'diterbitkan',
+            Product::REJECTED => 'ditolak',
+        ];
         $keyword = $request->get('keyword', '');
         $status = $request->get('status', '');
 
@@ -30,7 +35,7 @@ class ProductsController extends Controller
             )
             ->paginate(20);
 
-        return view('users.products.index', compact('products', 'keyword'));
+        return view('users.products.index', compact('products', 'keyword', 'status', 'productStatus'));
     }
 
 
