@@ -25,7 +25,6 @@ class ProductsController extends Controller
 
         $products = Auth::user()
             ->products()
-            ->pending()
             ->byKeyword('title', $keyword)
             ->when(
                 Str::of($status)

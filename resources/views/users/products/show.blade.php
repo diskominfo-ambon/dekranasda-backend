@@ -71,7 +71,23 @@
         </div>
 
         <div class="col-sm-12 col-md-12 mt-2">
-            <p class="product__price">Harga <span class="text-primary fw-bold">{{ rupiah($product->price) }}</span></p>
+            <div class="d-flex">
+
+                <p class="product__price fw-bold text-dark">
+                    Harga
+                </p>
+                <div class="ml-1">
+                    @if ($product->isDiscount)
+                    <div class="product__price">
+                        <span class="text-primary fw-bold">{{ rupiah($product->price - ( $product->discount * $product->price / 100)) }}</span>
+
+                        <span><del>{{ rupiah($product->price) }}</del></span>
+                    </div>
+                    @else
+                    <p class="product__price">{{ rupiah($product->price) }}</p>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 
