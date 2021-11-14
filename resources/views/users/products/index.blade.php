@@ -140,7 +140,14 @@
                                             <ul class="link-list-opt">
                                                 <li><a href="{{ route('products.edit', $product->id) }}"><em class="icon ni ni-edit"></em><span>Ubah produk</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-eye-off"></em><span>Nonaktifkan produk</span></a></li>
-                                                <li><a class="text-danger" href="{{ route('products.destroy', $product->id) }}"><em class="icon ni ni-trash"></em><span>Hapus produk</span></a></li>
+                                                <li>
+                                                    <form class="d-block" method="POST" action="{{ route('products.destroy', $product->id) }}">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button class="text-danger btn btn-white btn-block fw-normal fs-13px justify-content-start">
+                                                            <em class="icon ni ni-trash"></em><span>Hapus produk</span></button>
+                                                    </form>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
