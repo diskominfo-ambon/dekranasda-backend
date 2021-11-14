@@ -63,7 +63,6 @@ class ProductRejected extends Notification
             'message' => "Mohon maaf, produk kamu {$this->product->title} telah ditolak",
             'content' => $this->content,
             'route_name' => route('products.show', $this->product->id),
-            'product' => $this->product
         ];
     }
 }

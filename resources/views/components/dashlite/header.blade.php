@@ -98,9 +98,10 @@
                                         <div class="nk-notification-item dropdown-inner">
                                             <div class="nk-notification-content">
                                                 <div class="nk-notification-text">
-                                                    <a class="text-secondary fw-bold" href="{{ $notification['route'] }}">
+                                                    <a class="text-secondary fw-bold" href="{{ $notification->data['route_name'] }}">
                                                         {{ $notification->data['message'] }}
                                                     </a>
+
                                                     @if ( array_key_exists('content', $notification->data) )
                                                     <p class="m-0 mt-1">
                                                         {{

@@ -61,7 +61,6 @@ class ProductConfirmed extends Notification
 
         return [
             'message' => "Produk kamu {$this->product->title} berhasil dikonfirmasi!",
-            'product' => $this->product,
             'route_name' => route('products.show', $this->product->id)
         ];
     }
