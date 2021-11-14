@@ -42,7 +42,9 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $rules = $this->originalRules();
-        $user = User::findOrFail($this->id);
+        $user = is_null($this->id)
+            ? $this->user()
+            : User::findOrFail($this->id);
 
         if (strtolower($this->getMethod()) === 'put') {
             $rules->forget('password');
