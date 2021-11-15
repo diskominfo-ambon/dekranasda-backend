@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostsController;
 use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\ProductIncreaseVisitorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,6 @@ Route::resource('posts', PostsController::class, [
 Route::resource('products', ProductsController::class, [
     'only' => ['index', 'show']
 ]);
+
+Route::post('/views/products/{id}', [ProductIncreaseVisitorController::class, 'store'])
+    ->name('products.increase_visitor.index');

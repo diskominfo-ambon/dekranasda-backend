@@ -21,9 +21,7 @@ use App\Http\Controllers\UploadersController;
 
 Auth::routes();
 
-Route::get('/views/products/{id}', [ProductIncreaseVisitorController::class, 'store'])
-    ->name('products.increase_visitor.index')
-    ->middleware('is_ajax');
+
 
 Route::resource('uploaders', UploadersController::class, [
     'middleware' => ['auth', 'is_ajax']
