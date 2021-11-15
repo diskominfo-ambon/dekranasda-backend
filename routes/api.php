@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostsController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\ProductIncreaseVisitorController;
+use App\Http\Controllers\Api\PostIncreaseVisitorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,6 @@ Route::resource('products', ProductsController::class, [
 
 Route::post('/views/products/{id}', [ProductIncreaseVisitorController::class, 'store'])
     ->name('products.increase_visitor.index');
+
+Route::post('/views/posts/{id}', [PostIncreaseVisitorController::class, 'store'])
+    ->name('posts.increase_visitor.index');
